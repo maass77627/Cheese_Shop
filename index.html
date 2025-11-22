@@ -7,15 +7,43 @@
 </head>
 <body>
 
-  <nav>
-    <button id="home-btn">Home</button>
-    <button id="page2-btn">Page 2</button>
-    <button id="page3-btn">Page 3</button>
+    
+    
+    
+   
+  <nav class="navbar my-nav">
+    <img class="logo" src="public.js\pairinghouselogo.png" alt="cheese">
+
+    <div class="shop-dropdown">
+    <select id="shop" class="styled-select" name="shop">
+    <option value="">Shop</option> 
+    <option value="cheese">Cheese</option>
+    <option value="charcuterie">Charcuterie</option>
+    <option value="wine">Wine</option>
+    <option value="sandwiches">Sandwiches</option>
+    <option value="hero">Specialty Items</option>
+    </select>
+    </div>
+
+    <div class="shop-dropdown">
+    <select id="shop" class="styled-select" name="shop">
+    <option value="">About</option> 
+    <option value="cheese">Bio</option>
+    <option value="charcuterie">Charcuterie</option>
+    <option value="wine">Wine</option>
+    <option value="sandwiches">Sandwiches</option>
+    <option value="hero">Specialty Items</option>
+    </select>
+    </div>
+
+    
+    
   </nav>
 
   <!-- This is where all JS renders your pages -->
   <div id="app"></div>
 
   <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>
