@@ -4,6 +4,7 @@ body{
     padding: 0%;
     margin: 0%;
     display: flex;
+   flex-direction: column;
     width: 100%;
     min-height: 100vh;
 
@@ -39,15 +40,11 @@ body{
     width: 70px;
 
 }
-/* #home-btn, #about-btn, #cart-btn {
-  background-color: #d6d5ce; 
-  color: rgb(15, 14, 14);
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin: 20px;
-  cursor: pointer;
-  font-size: 16px;
-  height: 50px;
-  width: 100px;
-} */
+
+.main-image {
+    align-self: center;
+    width: 100%;
+    height: 400px;
+}
+
 
