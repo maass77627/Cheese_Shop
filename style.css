@@ -1,6 +1,7 @@
 body{
     font-family: "Playfair Display", serif;
-    background-color: darkgoldenrod;
+    /* background-color: darkgoldenrod; */
+    background-color: white;
     padding: 0%;
     margin: 0%;
     display: flex;
@@ -34,6 +35,7 @@ body{
 
 
 .styled-select {
+    margin-right: 100px;
     margin-top: 100px;
     background-color: bisque;
     border-radius: 20px;
@@ -43,8 +45,37 @@ body{
 
 .main-image {
     align-self: center;
-    width: 100%;
+    width: 80%;
     height: 400px;
+    display: block;
 }
 
+.products{
+    width: 100%;
+    background-color: #6a6004;
+    /* background-color: white; */
+    height: 700px;
+    z-index: 3;
+}
+
+
+.product-card {
+    background-color: white;
+    width: 300px;
+    height: 500px;
+    border-radius: 25px;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.product-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+
+}
 
