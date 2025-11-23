@@ -1,0 +1,34 @@
+{
+"cheeses": [
+    {
+        "id": 1,
+        "name": "Cheddar",
+        "price": 5.99,
+        "description": "A sharp tangy cheese perfect for sandwiches and snacking.",
+        "image": "public.js/cheddar.jpg"
+
+    },
+    {
+        "id": 2,
+        "name": "Brie",
+        "price": 8.99,
+        "description": "A soft creamy cheese with a mild flavor, great for spreading on crackers.",
+        "image": "public.js/brie.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Gouda",
+        "price": 7.49,
+        "description": "A semi-hard cheese with a rich, caramel-like flavor.",
+        "image": "publi.js/gouda.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Blue Cheese",
+        "price": 9.99,
+        "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
+        "image": "public.js/blue_cheese.jpg"
+    }
+]
+
+}
