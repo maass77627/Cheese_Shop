@@ -27,7 +27,7 @@
         "name": "Blue Cheese",
         "price": 9.99,
         "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
-        "image": "public.js\bluecheese.jpg"
+        "image": "public.js/bluecheese.jpg"
     }
 ]
 

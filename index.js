@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let shopbtn = document.getElementById("cart-btn")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
 
-  let cartCanvas = document.getElementById("cartCanvas")
+  let cartCanvas = document.getElementById("cart")
 
 
 

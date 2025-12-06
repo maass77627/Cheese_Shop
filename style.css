@@ -5,7 +5,7 @@ body{
     padding: 0%;
     margin: 0%;
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
     width: 100%;
     min-height: 100vh;
 
@@ -97,7 +97,31 @@ body{
     width: 50px;
 }
 
-/* .fas fa-shopping-cart{
+.cart-card{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff7ed; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border: 1px solid #f0d2a5; 
+}
 
-} */
+
+.cart-img {
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+#cartCanvas .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   
+}
+
+
 
