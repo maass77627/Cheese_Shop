@@ -2,6 +2,8 @@
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  let shopbtn = document.getElementsByClassName("fas fa-shopping-cart")
+  shopbtn.addEventListener("click", (e) => toggleCart(e))
 
 
 
@@ -35,6 +37,10 @@ fetch("http://localhost:3000/cheeses")
     function addToCart(e, cheese) {
       console.log(e)
       console.log(cheese)
+    }
+
+    function toggleCart(e) {
+      console.log(e)
     }
 
 

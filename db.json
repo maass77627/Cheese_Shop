@@ -5,7 +5,7 @@
         "name": "Cheddar",
         "price": 5.99,
         "description": "A sharp tangy cheese perfect for sandwiches and snacking.",
-        "image": "public.js/cheddar.jpg"
+        "image": "public.js/cheddar.webp"
 
     },
     {
@@ -20,14 +20,14 @@
         "name": "Gouda",
         "price": 7.49,
         "description": "A semi-hard cheese with a rich, caramel-like flavor.",
-        "image": "publi.js/gouda.jpg"
+        "image": "publi.js/gouda.webp"
     },
     {
         "id": 4,
         "name": "Blue Cheese",
         "price": 9.99,
         "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
-        "image": "public.js/blue_cheese.jpg"
+        "image": "public.js\bluecheese.jpg"
     }
 ]
 
