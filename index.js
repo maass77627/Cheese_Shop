@@ -20,8 +20,26 @@ fetch("http://localhost:3000/cheeses")
     <p class="product-description">${cheese.description}</p>
     <p class="product-price">$${cheese.price}</p>
   `;
+        let button = document.createElement("button")
+        button.className = "product-btn"
+        button.innerText = "Add to Cart"
+        button.addEventListener('click', (e) => addToCart(e, cheese))
         const container = document.querySelector(".products");
+        card.appendChild(button)
          container.appendChild(card);
+        //  container.appendChild(button)
     }
+
+    
+    
+    function addToCart(e, cheese) {
+      console.log(e)
+      console.log(cheese)
+    }
+
+
+
+
+
 
   });

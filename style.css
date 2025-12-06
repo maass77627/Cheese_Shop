@@ -75,6 +75,17 @@ body{
     
 }
 
+.product-btn {
+    /* position: absolute; */
+    /* bottom: 0px; */
+    margin-top: auto;
+    height: 50px;
+    width: 200px;
+    color: black;
+    background-color: rgb(234, 180, 110);
+    border-radius: 20px;
+}
+
 .product-img {
     width: 300px;
     height: 300px;
