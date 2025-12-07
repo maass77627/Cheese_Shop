@@ -1,8 +1,17 @@
 // const apiKey = 49dddcc0dc104b41af87dbe0cd34cca7
 
 document.addEventListener("DOMContentLoaded", () => {
-  let shopbtn = document.getElementById("cart-btn")
+  const container = document.querySelector(".products");
+  let shopbtn = document.getElementById("shop")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
+
+  let selectForm = document.getElementById("shop")
+  selectForm.addEventListener('change', (e) => {
+    console.log(e.target.value)
+    fetch(`http://localhost:3000/${e.target.value}`)
+    .then((response) => response.json())
+    .then((json) => renderProductCard(json))
+  })
 
   let cartCanvas = document.getElementById("cart")
 
@@ -13,15 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+// cheeses
 fetch("http://localhost:3000/cheeses")
   .then(res => res.json())
   .then(cheeses => {
     console.log(cheeses)
-    cheeses.forEach(cheese => renderCheeseCard(cheese));
+    cheeses.forEach(cheese => renderProductCard(cheese));
   });
 
-  function renderCheeseCard(cheese) {
+  function renderProductCard(cheese) {
+    
+    console.log(cheese)
+    let winebtn = document.createElement("button")
+    winebtn.innerText = "Get Pairing"
+    winebtn.addEventListener('click', (e) => getPairing(e))
     let card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
@@ -34,9 +48,10 @@ fetch("http://localhost:3000/cheeses")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
         button.addEventListener('click', (e) => addToCart(e, cheese))
-        const container = document.querySelector(".products");
+        // const container = document.querySelector(".products");
+        card.appendChild(winebtn)
         card.appendChild(button)
-         container.appendChild(card);
+        container.appendChild(card);
         //  container.appendChild(button)
     }
 
@@ -53,15 +68,39 @@ fetch("http://localhost:3000/cheeses")
       <p class="cart-description">${cheese.description}</p>
       <p class="cart-price">$${cheese.price}</p>
       `;
+        let button = document.createElement('button')
+        button.innerText = "delete"
+        button.addEventListener('click', (e) => deleteProduct(e))
+        cartCard.appendChild(button)
 
-
-
-      cartCanvas.appendChild(cartCard)
+         cartCanvas.appendChild(cartCard)
     }
 
+    
+    
     function toggleCart(e) {
       console.log(e)
     }
+
+    
+    
+    function deleteProduct(e) {
+      console.log(e)
+    }
+
+  //   function shopSelect(product) {
+  //     fetch(`http://localhost:3000/${product}`)
+  // .then(res => res.json())
+  // .then(products => {
+  //   console.log(products)
+  //   products.forEach(product => renderCheeseCard(product));
+  // });
+
+    // }
+
+
+
+
 
 
 

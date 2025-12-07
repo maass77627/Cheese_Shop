@@ -7,7 +7,7 @@
       "name": "Cheddar",
       "price": 5.99,
       "description": "A sharp tangy cheese perfect for sandwiches and snacking.",
-      "image": "./public/cheddar.webp"
+      "image": "./public/cheddar.jpg"
     },
     {
       "id": 2,
@@ -28,11 +28,12 @@
       "name": "Blue Cheese",
       "price": 9.99,
       "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
-      "image": "./public/bluecheese.jpg"
+      "image": "public\bluecheese.jpg"
+      
     }
   ],
 
-  "charcuterie": [
+  "charcuteries": [
     {
       "id": 1,
       "name": "Prosciutto",
