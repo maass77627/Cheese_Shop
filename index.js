@@ -1,11 +1,15 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// const apiKey = 49dddcc0dc104b41af87dbe0cd34cca7
 
 document.addEventListener("DOMContentLoaded", () => {
   let shopbtn = document.getElementById("cart-btn")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
 
   let cartCanvas = document.getElementById("cart")
+
+
+  fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=cheddar`)
+  .then((response) => response.json())
+  .then((json) => console.log(json))
 
 
 
