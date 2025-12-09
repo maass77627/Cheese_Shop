@@ -1,9 +1,14 @@
 // const apiKey = 49dddcc0dc104b41af87dbe0cd34cca7
+let cartItems = []
+//  let cartTotal = document.getElementById("count")
+// let cartTotal = document.getElementById("count").textContent = getCartTotal();
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".products");
   let shopbtn = document.getElementById("shop")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
+
+  
 
   let selectForm = document.getElementById("shop")
   selectForm.addEventListener('change', (e) => {
@@ -13,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((json) => renderProductCard(json))
   })
 
-  let cartCanvas = document.getElementById("cart")
+  let cartCanvas = document.getElementById("cartitems")
 
 
   fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=cheddar`)
@@ -58,6 +63,7 @@ fetch("http://localhost:3000/cheeses")
     
     
     function addToCart(e, cheese) {
+      cartItems.push(cheese)
       console.log(e)
       console.log(cheese)
       let cartCard = document.createElement("div")
@@ -70,10 +76,13 @@ fetch("http://localhost:3000/cheeses")
       `;
         let button = document.createElement('button')
         button.innerText = "delete"
-        button.addEventListener('click', (e) => deleteProduct(e))
+        button.addEventListener('click', (e) => deleteCartItem(e, cheese))
         cartCard.appendChild(button)
 
          cartCanvas.appendChild(cartCard)
+         console.log(cartItems)
+       document.getElementById("count").textContent = getCartTotal(cartItems);
+
     }
 
     
@@ -84,8 +93,27 @@ fetch("http://localhost:3000/cheeses")
 
     
     
-    function deleteProduct(e) {
-      console.log(e)
+    function deleteCartItem(e, cheese) {
+      // console.log(cartItems)
+      // console.log(e.target.parentNode)
+      e.target.parentNode.remove()
+      console.log(cheese)
+      cartItems = cartItems.filter((item) => item.id !== cheese.id)
+     updateCartTotal()
+     
+    }
+
+    function updateCartTotal() {
+      const total = getCartTotal(cartItems)
+       document.getElementById("count").textContent = total.toFixed(2)
+
+    }
+
+    
+
+    function getCartTotal(cartItems) {
+     return cartItems.reduce((acc, item) => acc + item.price, 0)
+
     }
 
   //   function shopSelect(product) {
