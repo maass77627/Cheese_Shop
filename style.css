@@ -6,10 +6,21 @@ body{
     margin: 0%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 100vh;
 
 }
+
+/* #glassbtn {
+    position: relative;
+    top: 10px;
+    left: 50px;
+    height: 50px;
+    width: 50px;
+    z-index: 999;
+} */
 
 .logo {
     position: relative;
@@ -58,6 +69,9 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;   
+    /* white-space: nowrap; */
 }
 
 
@@ -95,7 +109,7 @@ body{
     width: 50px;
 }
 
-.cart-card{
+/* .cart-card{
     width: 100%;
     padding: 10px;
     border-radius: 10px;
@@ -105,6 +119,27 @@ body{
     justify-content: space-between;
     margin-bottom: 12px;
     border: 1px solid #f0d2a5; 
+} */
+
+/* .cart-card {
+    position: relative;   
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff7ed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border: 1px solid #f0d2a5;
+}
+
+.cart-card:hover {
+    transform: translateY(-25px);
+}
+
+#count {
+    font-size: larger;
 }
 
 
@@ -121,5 +156,49 @@ body{
    
 }
 
+.glassbtn {
+    position: relative;
+    top: -350px;
+    left: 100px;
+    /* right: 50px;  */
+    /* height: 150px; */
+    /* width: 150px; */
+    /* z-index: 999; */
+/* }  */
+
+.cart-card {
+    position: relative;   /* anchor for the wine glass */
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff7ed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    border: 1px solid #f0d2a5;
+}
+
+.cart-card:hover {
+    transform: translateY(-5px);
+}
+
+.cart-img {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;   /* makes all images same size */
+    border-radius: 10px;
+}
+
+/* ⭐ FIXED: wine glass icon stays in same spot on every card */
+.glassbtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 22px;
+    color: black;
+    z-index: 999;
+    cursor: pointer;
+}
 
 

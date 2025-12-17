@@ -38,8 +38,11 @@ fetch("http://localhost:3000/cheeses")
   function renderProductCard(cheese) {
     
     console.log(cheese)
-    let winebtn = document.createElement("button")
-    winebtn.innerText = "Get Pairing"
+    let winebtn = document.createElement("i");
+    winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
+    //  let winebtn = document.getElementById("glassbtn")
+    // let winebtn = document.createElement("button")
+    //  winebtn.innerText = "Get Pairing"
     winebtn.addEventListener('click', (e) => getPairing(e))
     let card = document.createElement("div");
     card.className = "product-card";
