@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-// cheeses
+
 fetch("http://localhost:3000/cheeses")
   .then(res => res.json())
   .then(cheeses => {
@@ -40,9 +40,7 @@ fetch("http://localhost:3000/cheeses")
     console.log(cheese)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
-    //  let winebtn = document.getElementById("glassbtn")
-    // let winebtn = document.createElement("button")
-    //  winebtn.innerText = "Get Pairing"
+
     winebtn.addEventListener('click', (e) => getPairing(e))
     let card = document.createElement("div");
     card.className = "product-card";
@@ -67,8 +65,6 @@ fetch("http://localhost:3000/cheeses")
     
     function addToCart(e, cheese) {
       cartItems.push(cheese)
-      console.log(e)
-      console.log(cheese)
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
@@ -81,9 +77,7 @@ fetch("http://localhost:3000/cheeses")
         button.innerText = "delete"
         button.addEventListener('click', (e) => deleteCartItem(e, cheese))
         cartCard.appendChild(button)
-
-         cartCanvas.appendChild(cartCard)
-         console.log(cartItems)
+        cartCanvas.appendChild(cartCard)
        document.getElementById("count").textContent = getCartTotal(cartItems);
 
     }
@@ -97,12 +91,9 @@ fetch("http://localhost:3000/cheeses")
     
     
     function deleteCartItem(e, cheese) {
-      // console.log(cartItems)
-      // console.log(e.target.parentNode)
       e.target.parentNode.remove()
-      console.log(cheese)
       cartItems = cartItems.filter((item) => item.id !== cheese.id)
-     updateCartTotal()
+      updateCartTotal()
      
     }
 
@@ -118,24 +109,6 @@ fetch("http://localhost:3000/cheeses")
      return cartItems.reduce((acc, item) => acc + item.price, 0)
 
     }
-
-  //   function shopSelect(product) {
-  //     fetch(`http://localhost:3000/${product}`)
-  // .then(res => res.json())
-  // .then(products => {
-  //   console.log(products)
-  //   products.forEach(product => renderCheeseCard(product));
-  // });
-
-    // }
-
-
-
-
-
-
-
-
 
 
   });

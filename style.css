@@ -1,6 +1,5 @@
 body{
     font-family: "Playfair Display", serif;
-    /* background-color: darkgoldenrod; */
     background-color: white;
     padding: 0%;
     margin: 0%;
@@ -13,14 +12,7 @@ body{
 
 }
 
-/* #glassbtn {
-    position: relative;
-    top: 10px;
-    left: 50px;
-    height: 50px;
-    width: 50px;
-    z-index: 999;
-} */
+
 
 .logo {
     position: relative;
@@ -71,11 +63,12 @@ body{
     justify-content: center;
     overflow-x: auto;
     overflow-y: hidden;   
-    /* white-space: nowrap; */
+   
 }
 
 
 .product-card {
+     position: relative;
     background-color: white;
     width: 300px;
     height: 500px;
@@ -109,65 +102,9 @@ body{
     width: 50px;
 }
 
-/* .cart-card{
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff7ed; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    border: 1px solid #f0d2a5; 
-} */
-
-/* .cart-card {
-    position: relative;   
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #fff7ed;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    border: 1px solid #f0d2a5;
-}
-
-.cart-card:hover {
-    transform: translateY(-25px);
-}
-
-#count {
-    font-size: larger;
-}
-
-
-.cart-img {
-    height: 50px;
-    width: 100px;
-    border-radius: 10px;
-}
-
-#cartCanvas .offcanvas-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-   
-}
-
-.glassbtn {
-    position: relative;
-    top: -350px;
-    left: 100px;
-    /* right: 50px;  */
-    /* height: 150px; */
-    /* width: 150px; */
-    /* z-index: 999; */
-/* }  */
 
 .cart-card {
-    position: relative;   /* anchor for the wine glass */
+    position: relative;   
     width: 100%;
     padding: 10px;
     border-radius: 10px;
@@ -184,18 +121,18 @@ body{
 }
 
 .cart-img {
+    margin-top: 0px;
     width: 100px;
     height: 50px;
-    object-fit: cover;   /* makes all images same size */
-    border-radius: 10px;
+    object-fit: cover;   
 }
 
-/* ⭐ FIXED: wine glass icon stays in same spot on every card */
+
 .glassbtn {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 22px;
+    font-size: 30px;
     color: black;
     z-index: 999;
     cursor: pointer;
