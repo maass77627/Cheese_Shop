@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let cartCanvas = document.getElementById("cartitems")
 
 
-  fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=cheddar`)
-  .then((response) => response.json())
-  .then((json) => console.log(json))
+  // fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=cheddar`)
+  // .then((response) => response.json())
+  // .then((json) => console.log(json))
 
 
 
@@ -35,13 +35,15 @@ fetch("http://localhost:3000/cheeses")
     cheeses.forEach(cheese => renderProductCard(cheese));
   });
 
+  
+  
   function renderProductCard(cheese) {
-    
+    const container = document.querySelector(".products");
     console.log(cheese)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
-
-    winebtn.addEventListener('click', (e) => getPairing(e))
+   
+    winebtn.addEventListener('click', () => getPairing(cheese))
     let card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
@@ -78,7 +80,7 @@ fetch("http://localhost:3000/cheeses")
         button.addEventListener('click', (e) => deleteCartItem(e, cheese))
         cartCard.appendChild(button)
         cartCanvas.appendChild(cartCard)
-       document.getElementById("count").textContent = getCartTotal(cartItems);
+        document.getElementById("count").textContent = getCartTotal(cartItems);
 
     }
 
@@ -104,11 +106,41 @@ fetch("http://localhost:3000/cheeses")
     }
 
     
-
     function getCartTotal(cartItems) {
      return cartItems.reduce((acc, item) => acc + item.price, 0)
 
     }
+
+    function getPairing(cheese) {
+      console.log(cheese.name)
+       fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=${cheese.name}`)
+        .then((response) => response.json())
+        .then((json) => { 
+          
+          console.log(json)
+          let pairing = json
+         createWineModal(pairing)
+        })
+          
+    }
+
+    function createWineModal(pairing) {
+        let winemodal = document.getElementById("wine-modal")
+        winemodal.classList.remove("hidden")
+        console.log(pairing)
+        let description = document.getElementById("modal-description")
+        description.innerText = pairing.pairingText
+        let wines = document.getElementById("modal-wines")
+        wines.innerText = pairing.pairedWines
+        let product = document.getElementById("modal-description")
+        product.innerText = pairing.productMatches[0]
+        let button = document.getElementById("close-btn")
+        button.addEventListener("click", () => winemodal.classList.add("hidden"))
+
+
+    }
+
+   
 
 
   });
