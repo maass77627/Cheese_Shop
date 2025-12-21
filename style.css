@@ -1,14 +1,10 @@
 body{
-    /* font-family: "Playfair Display", serif;
-    background-color: white;
-    padding: 0%;
-    margin: 0%;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 100vh; */
+    
     font-family: "Playfair Display", serif;
   background-color: white;
   margin: 0;
@@ -167,6 +163,7 @@ body{
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -174,6 +171,14 @@ body{
 
 .hidden {
   display: none;
+}
+
+#modal-wines {
+    font-weight: bold;
+}
+
+#modal-product {
+    /* font-weight: bold; */
 }
 
 .wine-modal-content {

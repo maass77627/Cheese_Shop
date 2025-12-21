@@ -63,7 +63,7 @@ fetch("http://localhost:3000/cheeses")
         //  container.appendChild(button)
     }
 
-    
+    // <p class="cart-description">${cheese.description}</p>
     
     function addToCart(e, cheese) {
       cartItems.push(cheese)
@@ -72,7 +72,7 @@ fetch("http://localhost:3000/cheeses")
       cartCard.innerHTML = `
       <img src="${cheese.image}" class="cart-img" />
       <h3 class="cart-name">${cheese.name}</h3>
-      <p class="cart-description">${cheese.description}</p>
+     
       <p class="cart-price">$${cheese.price}</p>
       `;
         let button = document.createElement('button')
@@ -134,6 +134,7 @@ fetch("http://localhost:3000/cheeses")
         let wines = document.getElementById("modal-wines")
         wines.innerText = pairing.pairedWines
         console.log(pairing.productMatches[0])
+        
         let product = document.getElementById("modal-product")
         product.innerText = pairing.productMatches[0].title
         let button = document.getElementById("close-btn")
