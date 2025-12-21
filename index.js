@@ -130,10 +130,12 @@ fetch("http://localhost:3000/cheeses")
         console.log(pairing)
         let description = document.getElementById("modal-description")
         description.innerText = pairing.pairingText
+        console.log(pairing.pairingText)
         let wines = document.getElementById("modal-wines")
         wines.innerText = pairing.pairedWines
-        let product = document.getElementById("modal-description")
-        product.innerText = pairing.productMatches[0]
+        console.log(pairing.productMatches[0])
+        let product = document.getElementById("modal-product")
+        product.innerText = pairing.productMatches[0].title
         let button = document.getElementById("close-btn")
         button.addEventListener("click", () => winemodal.classList.add("hidden"))
 
