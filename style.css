@@ -56,6 +56,14 @@ body{
 
 .products{
     width: 100%;
+  background-color: #6a6004;
+  min-height: 100vh;        
+  display: flex;
+  flex-wrap: wrap;        
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+    /* width: 100%;
     background-color: #6a6004;
     height: 700px;
     z-index: 3;
@@ -64,7 +72,7 @@ body{
     justify-content: center;
     overflow-x: auto;
     overflow-y: hidden;   
-   
+    */
 }
 
 
@@ -97,9 +105,13 @@ body{
 }
 
 .product-img {
-    width: 300px;
+    /* width: 300px;
     height: 300px;
-    border-radius: 25px;
+    border-radius: 25px; */
+    width: 100%;
+  height: 250px;
+  object-fit: cover;     
+  border-radius: 20px;
 
 }
 
@@ -134,10 +146,7 @@ body{
     object-fit: cover;   
 }
 
-.product-description {
-    /* width: 100px; */
 
-}
 
 
 .glassbtn {
@@ -177,9 +186,7 @@ body{
     font-weight: bold;
 }
 
-#modal-product {
-    /* font-weight: bold; */
-}
+
 
 .wine-modal-content {
  background: white;

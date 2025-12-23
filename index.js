@@ -44,27 +44,27 @@ fetch("http://localhost:3000/cheeses")
 
   
   
-  function renderProductCard(cheese) {
+  function renderProductCard(product) {
    
 
    
-    console.log(cheese)
+    console.log(product)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
-    winebtn.addEventListener('click', () => getPairing(cheese, apiKey))
+    winebtn.addEventListener('click', () => getPairing(product, apiKey))
     let card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-    <img src="${cheese.image}" class="product-img" />
-    <h3 class="product-name">${cheese.name}</h3>
-    <p class="product-description">${cheese.description}</p>
-    <p class="product-price">$${cheese.price}</p>
+    <img src="${product.image}" class="product-img" />
+    <h3 class="product-name">${product.name}</h3>
+    <p class="product-description">${product.description}</p>
+    <p class="product-price">$${product.price}</p>
   `;
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
-        button.addEventListener('click', (e) => addToCart(e, cheese))
+        button.addEventListener('click', () => addToCart(product))
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
@@ -73,19 +73,19 @@ fetch("http://localhost:3000/cheeses")
 
   
     
-    function addToCart(e, cheese) {
-      cartItems.push(cheese)
+    function addToCart(product) {
+      cartItems.push(product)
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
-      <img src="${cheese.image}" class="cart-img" />
-      <h3 class="cart-name">${cheese.name}</h3>
+      <img src="${product.image}" class="cart-img" />
+      <h3 class="cart-name">${product.name}</h3>
      
-      <p class="cart-price">$${cheese.price}</p>
+      <p class="cart-price">$${product.price}</p>
       `;
         let button = document.createElement('button')
         button.innerText = "delete"
-        button.addEventListener('click', (e) => deleteCartItem(e, cheese))
+        button.addEventListener('click', (e) => deleteCartItem(e, product))
         cartCard.appendChild(button)
         cartCanvas.appendChild(cartCard)
         document.getElementById("count").textContent = getCartTotal(cartItems);
@@ -100,9 +100,9 @@ fetch("http://localhost:3000/cheeses")
 
     
     
-    function deleteCartItem(e, cheese) {
+    function deleteCartItem(e, product) {
       e.target.parentNode.remove()
-      cartItems = cartItems.filter((item) => item.id !== cheese.id)
+      cartItems = cartItems.filter((item) => item.id !== product.id)
       updateCartTotal()
      
     }
