@@ -1,7 +1,7 @@
-// const apiKey = 49dddcc0dc104b41af87dbe0cd34cca7
+const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
+
 let cartItems = []
-//  let cartTotal = document.getElementById("count")
-// let cartTotal = document.getElementById("count").textContent = getCartTotal();
+ const container = document.querySelector(".products");
 
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".products");
@@ -13,9 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectForm = document.getElementById("shop")
   selectForm.addEventListener('change', (e) => {
     console.log(e.target.value)
+    console.log(e.target)
     fetch(`http://localhost:3000/${e.target.value}`)
     .then((response) => response.json())
-    .then((json) => renderProductCard(json))
+    .then((json) => {
+      let products = json
+      container.innerHTML = " "
+      products.forEach((product) => renderProductCard(product))
+
+    })
   })
 
   let cartCanvas = document.getElementById("cartitems")
@@ -32,18 +38,21 @@ fetch("http://localhost:3000/cheeses")
   .then(res => res.json())
   .then(cheeses => {
     console.log(cheeses)
+    // container.innerHTML = " "
     cheeses.forEach(cheese => renderProductCard(cheese));
   });
 
   
   
   function renderProductCard(cheese) {
-    const container = document.querySelector(".products");
+   
+
+   
     console.log(cheese)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
-    winebtn.addEventListener('click', () => getPairing(cheese))
+    winebtn.addEventListener('click', () => getPairing(cheese, apiKey))
     let card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
@@ -56,14 +65,13 @@ fetch("http://localhost:3000/cheeses")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
         button.addEventListener('click', (e) => addToCart(e, cheese))
-        // const container = document.querySelector(".products");
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
-        //  container.appendChild(button)
+       
     }
 
-    // <p class="cart-description">${cheese.description}</p>
+  
     
     function addToCart(e, cheese) {
       cartItems.push(cheese)
@@ -111,37 +119,39 @@ fetch("http://localhost:3000/cheeses")
 
     }
 
-    function getPairing(cheese) {
+    function getPairing(cheese, apiKey) {
       console.log(cheese.name)
-       fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=${cheese.name}`)
+      console.log(apiKey)
+      fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=${apiKey}&food=${cheese.name}`)
         .then((response) => response.json())
         .then((json) => { 
-          
-          console.log(json)
           let pairing = json
          createWineModal(pairing)
         })
           
     }
 
+
+
     function createWineModal(pairing) {
-        let winemodal = document.getElementById("wine-modal")
-        winemodal.classList.remove("hidden")
-        console.log(pairing)
-        let description = document.getElementById("modal-description")
-        description.innerText = pairing.pairingText
-        console.log(pairing.pairingText)
-        let wines = document.getElementById("modal-wines")
-        wines.innerText = pairing.pairedWines
-        console.log(pairing.productMatches[0])
+        const winemodal = document.getElementById("wine-modal");
+              winemodal.classList.remove("hidden");
         
-        let product = document.getElementById("modal-product")
-        product.innerText = pairing.productMatches[0].title
+        const description = document.getElementById("modal-description");
+        const wines = document.getElementById("modal-wines")
+        const product = document.getElementById("modal-product")
+           
+        description.innerText = pairing?.pairingText || "No pairing description available";
+       
+        
+           wines.innerText = pairing?.pairedWines?.length ? pairing.pairedWines.join(", ") : "No wine recommendations availablle.";
+       
+        
+           product.innerText = pairing?.productMatches?.[0]?.title || "No matching product found.";
+
         let button = document.getElementById("close-btn")
-        button.addEventListener("click", () => winemodal.classList.add("hidden"))
-
-
-    }
+           button.addEventListener("click", () => winemodal.classList.add("hidden"));
+}
 
    
 

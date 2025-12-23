@@ -28,7 +28,7 @@
       "name": "Blue Cheese",
       "price": 9.99,
       "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
-      "image": "public\bluecheese.jpg"
+      "image": "public/bluecheese.jpg"
       
     }
   ],
@@ -39,28 +39,29 @@
       "name": "Prosciutto",
       "price": 6.99,
       "description": "Thinly sliced Italian dry-cured ham with a delicate, buttery flavor.",
-      "image": "./public/prosciutto.jpg"
+      "image": "./public/procuitto.jpg"
+     
     },
     {
       "id": 2,
       "name": "Salami",
       "price": 5.49,
       "description": "A classic cured sausage with bold, savory spices.",
-      "image": "./public/salami.jpg"
+      "image": "./public/salami.webp"
     },
     {
       "id": 3,
       "name": "Soppressata",
       "price": 7.99,
       "description": "A spicy cured Italian meat with rich, rustic flavor.",
-      "image": "./public/soppressata.jpg"
+      "image": "./public/sopressata.webp"
     },
     {
       "id": 4,
       "name": "Chorizo",
       "price": 6.49,
       "description": "A smoky, spicy cured sausage perfect for tapas and boards.",
-      "image": "./public/chorizo.jpg"
+      "image": "./public/chorizo.webp"
     }
   ]
 }
