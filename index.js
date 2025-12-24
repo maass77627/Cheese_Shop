@@ -3,7 +3,7 @@ const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 let cartItems = []
  const container = document.querySelector(".products");
 
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".products");
   let shopbtn = document.getElementById("shop")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectForm = document.getElementById("shop")
   selectForm.addEventListener('change', (e) => {
     console.log(e.target.value)
+    
     console.log(e.target)
     fetch(`http://localhost:3000/${e.target.value}`)
     .then((response) => response.json())
