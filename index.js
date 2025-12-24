@@ -2,28 +2,31 @@ const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 let cartItems = []
   const container = document.querySelector(".products");
-  // let button = document.getElementById("close-btn")
-  // let aboutmodal = document.getElementById("about-modal")
-  // button.addEventListener("click", () => aboutmodal.classList.add("hidden") );
+  
 
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
 
-  
+
+
   let button = document.getElementById("about-close")
-  console.log(button)
+  
   let aboutmodal = document.getElementById("about-modal")
-  console.log(aboutmodal)
+  
   button.addEventListener("click", () => aboutmodal.classList.add("hidden") );  
 
-
+   let select = document.getElementById("shopfour")
+   select.addEventListener("click", () => { 
+    console.log("changed") ;
+    aboutmodal.classList.remove("hidden")
+  })
 
 
 
 
   const container = document.querySelector(".products");
-  let shopbtn = document.getElementById("shop")
-  shopbtn.addEventListener("click", (e) => toggleCart(e))
+      let shopbtn = document.getElementById("shop")
+      shopbtn.addEventListener("click", (e) => toggleCart(e))
 
   
 
@@ -63,10 +66,7 @@ fetch("http://localhost:3000/cheeses")
   
   
   function renderProductCard(product) {
-   
-
-   
-    console.log(product)
+     console.log(product)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
