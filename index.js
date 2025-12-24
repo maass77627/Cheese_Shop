@@ -1,9 +1,26 @@
 const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 let cartItems = []
- const container = document.querySelector(".products");
+  const container = document.querySelector(".products");
+  // let button = document.getElementById("close-btn")
+  // let aboutmodal = document.getElementById("about-modal")
+  // button.addEventListener("click", () => aboutmodal.classList.add("hidden") );
 
   document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM loaded");
+
+  
+  let button = document.getElementById("about-close")
+  console.log(button)
+  let aboutmodal = document.getElementById("about-modal")
+  console.log(aboutmodal)
+  button.addEventListener("click", () => aboutmodal.classList.add("hidden") );  
+
+
+
+
+
+
   const container = document.querySelector(".products");
   let shopbtn = document.getElementById("shop")
   shopbtn.addEventListener("click", (e) => toggleCart(e))
