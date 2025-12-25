@@ -150,8 +150,9 @@ body{
 
 .glassbtn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    left: 20px;
+    /* right: 10px; */
     font-size: 30px;
     color: black;
     z-index: 999;
@@ -193,7 +194,7 @@ body{
   border-radius: 12px;
   width: 320px;
   position: relative;
-  text-align: left;
+  /* text-align: right; */
 }
 
 .about-modal-content {
@@ -235,4 +236,13 @@ body{
 #peopleimg {
     height: 400px;
     width: 400px;
+}
+
+.star {
+  color: #625a5a;
+  cursor: pointer;
+}
+
+.star.filled {
+  color: gold;
 }

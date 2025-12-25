@@ -7,6 +7,7 @@ let cartItems = []
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
 
+  
 
 
   let button = document.getElementById("about-close")
@@ -31,8 +32,8 @@ let cartItems = []
   
 
   let selectForm = document.getElementById("shop")
-  selectForm.addEventListener('change', (e) => {
-    console.log(e.target.value)
+      selectForm.addEventListener('change', (e) => {
+      console.log(e.target.value)
     
     console.log(e.target)
     fetch(`http://localhost:3000/${e.target.value}`)
@@ -48,10 +49,7 @@ let cartItems = []
   let cartCanvas = document.getElementById("cartitems")
 
 
-  // fetch(`https://api.spoonacular.com/food/wine/pairing?apiKey=49dddcc0dc104b41af87dbe0cd34cca7&food=cheddar`)
-  // .then((response) => response.json())
-  // .then((json) => console.log(json))
-
+  
 
 
 
@@ -78,7 +76,29 @@ fetch("http://localhost:3000/cheeses")
     <h3 class="product-name">${product.name}</h3>
     <p class="product-description">${product.description}</p>
     <p class="product-price">$${product.price}</p>
+
+    <div class="star-rating">
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+  </div>
   `;
+
+   let stars = document.querySelectorAll(".star")
+   stars.forEach((star, index) => {
+    star.addEventListener("click", () => {
+      console.log("clicked")
+      style(star)
+
+    })
+   })
+  //  star.addEventListener("click", () => style(star))
+  //  console.log(star)
+
+
+
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
@@ -86,6 +106,8 @@ fetch("http://localhost:3000/cheeses")
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
+
+       
        
     }
 
@@ -162,7 +184,7 @@ fetch("http://localhost:3000/cheeses")
         description.innerText = pairing?.pairingText || "No pairing description available";
        
         
-           wines.innerText = pairing?.pairedWines?.length ? pairing.pairedWines.join(", ") : "No wine recommendations availablle.";
+        wines.innerText = pairing?.pairedWines?.length ? pairing.pairedWines.join(", ") : "No wine recommendations availablle.";
        
         
            product.innerText = pairing?.productMatches?.[0]?.title || "No matching product found.";
@@ -171,6 +193,10 @@ fetch("http://localhost:3000/cheeses")
            button.addEventListener("click", () => winemodal.classList.add("hidden"));
 }
 
+
+function style(star) {
+  star.classList.add("filled")
+}
    
 
 
