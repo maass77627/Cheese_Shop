@@ -1,7 +1,8 @@
 const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 let cartItems = []
-  const container = document.querySelector(".products");
+ 
+const container = document.querySelector(".products");
   
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -11,7 +12,6 @@ let cartItems = []
 
 
   let button = document.getElementById("about-close")
-  
   let aboutmodal = document.getElementById("about-modal")
   
   button.addEventListener("click", () => aboutmodal.classList.add("hidden") );  
@@ -69,6 +69,7 @@ fetch("http://localhost:3000/cheeses")
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
     winebtn.addEventListener('click', () => getPairing(product, apiKey))
+
     let card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
@@ -86,19 +87,21 @@ fetch("http://localhost:3000/cheeses")
   </div>
   `;
 
-   let stars = document.querySelectorAll(".star")
-   stars.forEach((star, index) => {
-    star.addEventListener("click", () => {
-      console.log("clicked")
-      style(star)
+  
+    let stars = card.querySelectorAll(".star")
+  
+    stars.forEach((star, index) => {
+      console.log(index)
+      console.log(product.rating)
+      if (index < product.rating) {
+        star.classList.add("filled");
+      } else { 
+        star.classList.remove("filled")
+      }
+      
+     })
 
-    })
-   })
-  //  star.addEventListener("click", () => style(star))
-  //  console.log(star)
-
-
-
+    
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
@@ -107,9 +110,7 @@ fetch("http://localhost:3000/cheeses")
         card.appendChild(button)
         container.appendChild(card);
 
-       
-       
-    }
+       }
 
   
     
@@ -184,7 +185,7 @@ fetch("http://localhost:3000/cheeses")
         description.innerText = pairing?.pairingText || "No pairing description available";
        
         
-        wines.innerText = pairing?.pairedWines?.length ? pairing.pairedWines.join(", ") : "No wine recommendations availablle.";
+        wines.innerText = pairing?.pairedWines?.length ? pairing.pairedWines.join(", ") : "No wine recommendations available.";
        
         
            product.innerText = pairing?.productMatches?.[0]?.title || "No matching product found.";
