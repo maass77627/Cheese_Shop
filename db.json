@@ -130,7 +130,8 @@
       "author": "Kelly",
       "rating": 5,
       "comment": "Sharp and perfect on crackers",
-      "date": "2025-01-05"
+      "date": "2025-01-05",
+      "image": "public/cheddar.jpg"
     },
     {
       "id": 2,
@@ -138,7 +139,8 @@
       "author": "Sam",
       "rating": 4,
       "comment": "Great flavor, slightly salty",
-      "date": "2025-01-07"
+      "date": "2025-01-07",
+      "image": "public/gouda.webp"
     },
     {
       "id": 3,
@@ -146,7 +148,8 @@
       "author": "Jess",
       "rating": 5,
       "comment": "So creamy!",
-      "date": "2025-01-08"
+      "date": "2025-01-08",
+      "image": "public/bluecheese.jpg"
     }
   ]
 

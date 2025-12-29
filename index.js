@@ -126,7 +126,7 @@ fetch("http://localhost:3000/cheeses")
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
-      <img src="${product.image}" class="cart-img" />
+      <img  src="${product.image}" class="cart-img" />
       <h3 class="cart-name">${product.name}</h3>
      
       <p class="cart-price">$${product.price}</p>
@@ -205,21 +205,32 @@ function loadReviewCarousel() {
   .then((json) => {
     console.log(json);
   let reviews = json;
-  reviews.forEach((review) => buildReviewCarousel(review))
+  reviews.forEach((review, index) => buildReviewCarousel(review, index))
   
 })
 }
 
-function buildReviewCarousel(review) {
+function buildReviewCarousel(review, index) {
   console.log(review)
+  let card = document.createElement("div")
+  card.className = index === 0
+    ? "carousel-item active"
+    : "carousel-item"
   let carousel = document.getElementById("review-carousel-inner")
   let header = document.createElement("header")
+  header.className = "review-name"
   header.innerHTML = review.author
   let p = document.createElement("p")
   p.innerText = review.comment
-  carousel.appendChild(header)
-  carousel.appendChild(p)
-  carousel.appendChild(renderStars(review.rating))
+  let image = document.createElement("img")
+  image.className = "review-image"
+  image.src = review.image
+  card.appendChild(header)
+  card.appendChild(image)
+  card.appendChild(p)
+  card.appendChild(renderStars(review.rating))
+  carousel.appendChild(card)
+  
   }
 
 
@@ -230,9 +241,12 @@ function buildReviewCarousel(review) {
       const star = document.createElement("i");
       star.classList.add("fa-star", "star");
       if (i <= rating) {
-        star.classList.add("fa-solid");
+        star.classList.add("filled");
+         star.classList.add("fa-solid");
       } else {
-        star.classList.add("fa-regular");
+        star.classList.add("fa-solid")
+        star.classList.remove("filled");
+        // star.classList.add("fa-regular");
       }
       ratingDiv.appendChild(star);
     }
