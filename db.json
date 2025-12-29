@@ -10,6 +10,7 @@
       "description": "A sharp tangy cheese perfect for sandwiches and snacking.",
       "image": "public/cheddar.jpg",
       "rating": 5
+     
     },
     {
       "id": 2,
@@ -119,6 +120,33 @@
       "description": "A light, sparkling wine with green apple and pear notes.",
       "image": "public/prosecco.webp",
       "rating": 1
+    }
+    
+  ],
+   "reviews": [
+    {
+      "id": 1,
+      "productId": 1,
+      "author": "Kelly",
+      "rating": 5,
+      "comment": "Sharp and perfect on crackers",
+      "date": "2025-01-05"
+    },
+    {
+      "id": 2,
+      "productId": 1,
+      "author": "Sam",
+      "rating": 4,
+      "comment": "Great flavor, slightly salty",
+      "date": "2025-01-07"
+    },
+    {
+      "id": 3,
+      "productId": 2,
+      "author": "Jess",
+      "rating": 5,
+      "comment": "So creamy!",
+      "date": "2025-01-08"
     }
   ]
 
