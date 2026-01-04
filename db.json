@@ -35,6 +35,22 @@
       "description": "A strong-flavored cheese with blue veins, perfect for salads and dressings.",
       "image": "public/bluecheese.jpg",
       "rating": 3
+    },
+    {
+      "id": 6,
+      "name": "Gruyère",
+      "description": "Nutty and slightly sweet Alpine cheese, perfect for melting.",
+      "price": 9.75,
+      "rating": 5,
+      "image": "public/gruyere.webp"
+    },
+    {
+      "id": 7,
+      "name": "Havarti",
+      "description": "Mild, creamy Danish cheese with a smooth texture.",
+      "price": 7.50,
+      "rating": 4,
+      "image": "public/havarti.webp"
     }
   ],
   "charcuteries": [
@@ -69,6 +85,14 @@
       "description": "A smoky, spicy cured sausage perfect for tapas and boards.",
       "image": "public/chorizo.webp",
       "rating": 2
+    },
+    {
+      "id": 10,
+      "name": "Pâté de Campagne",
+      "description": "Country-style pork pâté with herbs and a rustic texture.",
+      "price": 10.99,
+      "rating": 4,
+      "image": "public/porkpate.webp"
     }
   ],
   "wines": [
@@ -151,6 +175,30 @@
       "date": "2025-01-08",
       "image": "public/bluecheese.jpg"
     }
-  ]
+  ],
+  "locations": [
+  {
+    "id": 1,
+    "city": "Austin",
+    "state": "TX",
+    "address": "123 South Congress Ave",
+    "hours": "Mon–Sun 10am–9pm",
+    "phone": "(512) 555-1234",
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "description": "Local Texas charcuterie and tasting events."
+  },
+  {
+    "id": 1,
+    "city": "Georgetown",
+    "state": "TX",
+    "address": "123 South Congress Ave",
+    "hours": "Mon–Sun 10am–9pm",
+    "phone": "(512) 555-1234",
+    "lat": 30.2672,
+    "lng": -97.7431,
+    "description": "Local Texas charcuterie and tasting events."
+  }
+]
 
 }
