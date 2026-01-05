@@ -8,9 +8,12 @@ const container = document.querySelector(".products");
 
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
-
-     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
-
+   const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
+   const myCarousel = document.querySelector('#review-carousel')
+   const reviewCarousel = new bootstrap.Carousel(myCarousel, {
+    interval: 2000,
+    wrap: false
+   })
 
   
   let button = document.getElementById("about-close")

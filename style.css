@@ -73,8 +73,8 @@ body{
     height: 50px;
     width: 200px;
     color: black;
-    background-color: rgb(234, 180, 110);
-    border-radius: 20px;
+    background-color: rgb(242, 212, 172);
+    border-radius: 30px;
 }
 
 .product-btn:hover {
