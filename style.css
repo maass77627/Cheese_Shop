@@ -150,10 +150,13 @@ body{
 }
 
 
-.wine-modal{
+ .wine-modal{
+  position: fixed;
+  
   height: 300px;
   width: 300px;
+  background-color: #fff7ed;
+  border-radius: 25px;
+  z-index: 10;
   
-
-
-}
+} 

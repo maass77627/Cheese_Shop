@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 let cartItems = []
@@ -14,6 +8,9 @@ const container = document.querySelector(".products");
 
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
+
+     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
+
 
   
   let button = document.getElementById("about-close")
@@ -175,34 +172,35 @@ fetch("http://localhost:3000/cheeses")
     }
 
     function loadAboutModal(e) {
-      console.log(e)
+       console.log(e.target)
+
+
+     }
+
+
+
+   function createWineModal(pairing) {
+    
+      let header = document.getElementById("title")
+      let p = document.getElementById("text")
+      let span = document.getElementById("span")
+      if (pairing.pairedWines && pairing.pairingText && pairing.productMatches[0].title) {
+      header.innerText = pairing.pairedWines
+      p.innerText = pairing.pairingText
+      span.innerText = pairing.productMatches[0].title
+      } else {
+        header.innerText = ""
+        p.innerText = "No pairing Available at this Time"
+        span.innerText = ""
+      }
+       console.log(pairing)
+       wineModal.show()
     }
 
 
 
 
-
-
-
-
-  // function renderStars(rating) {
-  //   const ratingDiv = document.createElement("div")
-  //   ratingDiv.className = "star-rating";
-  //   for (let i = 1; i <= 5; i++) {
-  //     const star = document.createElement("i");
-  //     star.classList.add("fa-star", "star");
-  //     if (i <= rating) {
-  //       star.classList.add("filled");
-  //        star.classList.add("fa-solid");
-  //     } else {
-  //       star.classList.add("fa-solid")
-  //       star.classList.remove("filled");
-  //       // star.classList.add("fa-regular");
-  //     }
-  //     ratingDiv.appendChild(star);
-  //   }
-  //   return ratingDiv;
-  // }
+  
    
 
 
