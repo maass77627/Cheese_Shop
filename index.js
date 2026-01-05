@@ -25,6 +25,14 @@ const container = document.querySelector(".products");
     loadAboutModal(e)
   })
 
+  let reviewSelect = document.getElementById("shoptwo")
+  reviewSelect.addEventListener("change", (e) => {
+    console.log(e.target)
+    console.log("changed")
+    fetchReviewData(e)
+
+  })
+
 
 
   const container = document.querySelector(".products");
@@ -183,7 +191,6 @@ fetch("http://localhost:3000/cheeses")
 
 
    function createWineModal(pairing) {
-    
       let header = document.getElementById("title")
       let p = document.getElementById("text")
       let span = document.getElementById("span")
@@ -200,6 +207,55 @@ fetch("http://localhost:3000/cheeses")
        wineModal.show()
     }
 
+
+    function fetchReviewData() {
+      fetch('http://localhost:3000/reviews')
+      .then((response) => response.json())
+      .then((json) => { 
+        console.log(json)
+        let reviews = json
+        // reviews.forEach((review) => {
+        //   createReviewCarousel(review)
+        // })
+        createReviewCarousel(reviews)
+
+      })
+    }
+
+    function createReviewCarousel(reviews) {
+      console.log(reviews)
+      const carousel = document.querySelector(".carousel-inner")
+    //  const carousel = document.querySelector("carousel-inner")
+      for (let i = 0; i < reviews.length; i++) {
+        let review = reviews[i]
+        // let carouselItem = document.getElementById(`slide-${i}`)
+        let carouselItem = document.createElement("div")
+        carouselItem.className = "carousel-item"
+        carouselItem.id = `slide-${i}`
+        console.log(carouselItem)
+        let card = document.createElement("div")
+        card.className = "review-card"
+        let p = document.createElement("p")
+        let h1 = document.createElement("h1")
+        let image = document.createElement("img")
+        h1.innerText = review.author
+        p.innerText = review.comment
+        image.src = review.image
+        image.alt = "review"
+        image.className = "review-image"
+        
+        card.appendChild(h1)
+        card.appendChild(image)
+        card.appendChild(p)
+        carouselItem.appendChild(card)
+        carousel.appendChild(carouselItem)
+
+
+      }
+      
+
+
+    }
 
 
 

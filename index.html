@@ -49,7 +49,7 @@
  
 
     <nav class="navbar my-nav">
-    <img class="logo" src="public\pairinghouselogo.png" alt="cheese">
+    <img class="logo" src="public/pairinghouselogo.png" alt="cheese">
    
     <div class="shop-dropdown">
     <select id="shop" class="styled-select" name="shop">
@@ -81,8 +81,8 @@
     <div class="shop-dropdown">
     <select id="shopfour" class="styled-select" name="shop">
     <option value="about">About</option> 
-    <option value="about">Owners</option>
-    <option value="about">Contact</option>
+    <option value="owners">Owners</option>
+    <option value="contact">Contact</option>
     </select>
     </div>
 
@@ -109,22 +109,22 @@
     <button type="button" data-bs-target="#review-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#review-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
-    <div id="1" class="carousel-item active">
+  <div id="carousel-inner" class="carousel-inner">
+    <div id="slide-1" class="carousel-item active">
        <p>hello</p>
        </div>
-    <div id="2" class="carousel-item">
+    <div id="slide-2" class="carousel-item">
       <p>hi</p>
     </div>
-    <div id="3" class="carousel-item">
+    <div id="slide-3" class="carousel-item">
       <p>hello</p>
     </div>
 </div>
-<button class="carousel-control-prev" type="button" data-bs-target="review-carousel" data-bs-slide="prev">
+<button class="carousel-control-prev" type="button" data-bs-target="#review-carousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="review-carousel" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#review-carousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
