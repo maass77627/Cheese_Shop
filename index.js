@@ -4,16 +4,28 @@ const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 let cartItems = []
  
 const container = document.querySelector(".products");
-  
+
 
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
+   
+    
    const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
    const myCarousel = document.querySelector('#review-carousel')
    const reviewCarousel = new bootstrap.Carousel(myCarousel, {
     interval: 2000,
     wrap: false
    })
+
+   stars = document.createElement("div")
+   stars.className = "star-rating"
+   stars.innerHTML = `
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+    <i  class="fa-solid fa-star star"></i>
+   `
 
   
   let button = document.getElementById("about-close")
@@ -33,9 +45,7 @@ const container = document.querySelector(".products");
 
   })
 
-
-
-  const container = document.querySelector(".products");
+   const container = document.querySelector(".products");
       let shopbtn = document.getElementById("shop")
       shopbtn.addEventListener("click", (e) => toggleCart(e))
 
@@ -145,9 +155,9 @@ fetch("http://localhost:3000/cheeses")
 
     
     
-    function toggleCart(e) {
-      console.log(e)
-    }
+    // function toggleCart(e) {
+    //   console.log(e)
+    // }
 
     
     
@@ -247,15 +257,38 @@ fetch("http://localhost:3000/cheeses")
         card.appendChild(h1)
         card.appendChild(image)
         card.appendChild(p)
+        let staricons = stars.querySelectorAll(".star")
+        card.appendChild(loadStars(staricons, review.rating))
         carouselItem.appendChild(card)
         carousel.appendChild(carouselItem)
 
 
       }
+    }
+
+     function loadStars(staricons, rating) {
+        rating = Number(rating)
+         console.log(staricons)
+      staricons.forEach((star, index) => {
+        console.log(star)
+        if (index < rating) {
+      star.classList.add("filled")
+       } else {
+      star.classList.remove("filled")
+    }
+    })
+    return stars
+      }
+        
+       
+        
+
+
+      
       
 
 
-    }
+    
 
 
 
