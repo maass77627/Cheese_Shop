@@ -89,12 +89,24 @@
   <i id="cart-btn"
    class="fas fa-shopping-cart"
    data-bs-toggle="offcanvas"
-   data-bs-target="#cartCanvas">
+   data-bs-target="#offcanvas">
   </i>
     
   </nav>
 
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="off-canvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" data-bs-dismiss="#offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    Content for the offcanvas
+  </div>
+  </div>
  
+
+
+
 <main id="main-content">
   <h1 id="main-text" class="main-text">Have your Cheese and Eat it Too</h1>
   <img class="main-image" src="public/pairingimage.jpg" alt="cheeseplate">

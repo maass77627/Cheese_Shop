@@ -107,6 +107,9 @@ fetch("http://localhost:3000/cheeses")
   </div>
   `;
 
+  let cartbtn = document.getElementById("cart-btn")
+  cartbtn.addEventListener("click", () => console.log("clicked"))
+
   
     let stars = card.querySelectorAll(".star")
   
