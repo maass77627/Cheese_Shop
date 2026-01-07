@@ -144,17 +144,14 @@ fetch("http://localhost:3000/cheeses")
     function addToCart(product) {
       let offCanvas = document.getElementById("offcanvas-body")
       
-      if (product.quantity) {
-        product.quantity += 1 
+     let item = cartItems.find(item => item.id === product.id)
 
-        } else {
-          product = {...product, quantity: 1}
-          cartItems.push(product)
-        }
-      
 
-      // cartItems.push(product)
-
+      if (item) {
+        item.quantity += 1 
+      } else {
+      product = {...product, quantity: 1}
+      cartItems.push(product)
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
@@ -169,14 +166,12 @@ fetch("http://localhost:3000/cheeses")
         cartCard.appendChild(buttontwo)
         offCanvas.appendChild(cartCard)
         document.getElementById("count").textContent = getCartTotal(cartItems);
+      }
 
     }
 
     
     
-    // function toggleCart(e) {
-    //   console.log(e)
-    // }
 
     
     
