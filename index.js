@@ -27,6 +27,8 @@ const container = document.querySelector(".products");
     <i  class="fa-solid fa-star star"></i>
    `
 
+   let cartbtn = document.getElementById("cart-btn")
+  cartbtn.addEventListener("click", () => console.log("clicked"))
   
   let button = document.getElementById("about-close")
   
@@ -66,7 +68,7 @@ const container = document.querySelector(".products");
     })
   })
 
-  let cartCanvas = document.getElementById("cartitems")
+  
 
 
   
@@ -107,8 +109,8 @@ fetch("http://localhost:3000/cheeses")
   </div>
   `;
 
-  let cartbtn = document.getElementById("cart-btn")
-  cartbtn.addEventListener("click", () => console.log("clicked"))
+  // let cartbtn = document.getElementById("cart-btn")
+  // cartbtn.addEventListener("click", () => console.log("clicked"))
 
   
     let stars = card.querySelectorAll(".star")
@@ -128,7 +130,9 @@ fetch("http://localhost:3000/cheeses")
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
-        button.addEventListener('click', () => addToCart(product))
+        button.addEventListener('click', () => {
+          console.log("clicked cart")
+          addToCart(product)})
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
@@ -138,20 +142,32 @@ fetch("http://localhost:3000/cheeses")
   
     
     function addToCart(product) {
-      cartItems.push(product)
+      let offCanvas = document.getElementById("offcanvas-body")
+      
+      if (product.quantity) {
+        product.quantity += 1 
+
+        } else {
+          product = {...product, quantity: 1}
+          cartItems.push(product)
+        }
+      
+
+      // cartItems.push(product)
+
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
       <img  src="${product.image}" class="cart-img" />
       <h3 class="cart-name">${product.name}</h3>
-     
-      <p class="cart-price">$${product.price}</p>
+     <p class="cart-price">$${product.price}</p>
       `;
-        let button = document.createElement('button')
-        button.innerText = "delete"
-        button.addEventListener('click', (e) => deleteCartItem(e, product))
-        cartCard.appendChild(button)
-        cartCanvas.appendChild(cartCard)
+        
+        let buttontwo = document.createElement('button')
+        buttontwo.innerText = "delete"
+        buttontwo.addEventListener('click', (e) => deleteCartItem(e, product))
+        cartCard.appendChild(buttontwo)
+        offCanvas.appendChild(cartCard)
         document.getElementById("count").textContent = getCartTotal(cartItems);
 
     }
@@ -270,6 +286,7 @@ fetch("http://localhost:3000/cheeses")
     }
 
      function loadStars(staricons, rating) {
+      
         rating = Number(rating)
          console.log(staricons)
       staricons.forEach((star, index) => {
