@@ -180,9 +180,10 @@ fetch("http://localhost:3000/cheeses")
 
     function handleQuantityChange() {
       let input = document.getElementById("input")
-       let value = input.value
+       let value = parseInt(input.value)
        console.log(value)
-       value + 1
+       value += 1
+       console.log(value)
        input.value = value
 
     }
