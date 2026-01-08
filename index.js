@@ -155,7 +155,7 @@ fetch("http://localhost:3000/cheeses")
      <p class="cart-price">$${product.price}</p>
       `;
         let minus = document.createElement("button")
-        minus.addEventListener("click", console.log("click minus"))
+        minus.addEventListener("click", (e) => handleQuantityChange(e))
         minus.innerHTML = "-"
         let input = document.createElement("input")
         input.id = "input"
@@ -163,7 +163,7 @@ fetch("http://localhost:3000/cheeses")
         input.type = "text"
         let plus = document.createElement("button")
         plus.innerHTML = "+"
-        plus.addEventListener("click", () => handleQuantityChange())
+        plus.addEventListener("click", (e) => handleQuantityChange(e))
 
         let buttontwo = document.createElement('button')
         buttontwo.innerText = "delete"
@@ -178,15 +178,29 @@ fetch("http://localhost:3000/cheeses")
 
     }
 
-    function handleQuantityChange() {
+    function handleQuantityChange(e) {
+      console.log(e.target)
+      if (e.target.innerText == "+") {
       let input = document.getElementById("input")
        let value = parseInt(input.value)
        console.log(value)
        value += 1
        console.log(value)
+       input.value = value }
+       else {
+          let input = document.getElementById("input")
+       let value = parseInt(input.value)
+       console.log(value)
+       value -= 1
+       console.log(value)
        input.value = value
 
-    }
+
+       }
+
+       }
+
+    
 
     
     
