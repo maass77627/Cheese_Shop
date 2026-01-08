@@ -183,22 +183,18 @@ fetch("http://localhost:3000/cheeses")
       if (e.target.innerText == "+") {
       let input = document.getElementById("input")
        let value = parseInt(input.value)
-       console.log(value)
        value += 1
-       console.log(value)
        input.value = value }
        else {
           let input = document.getElementById("input")
        let value = parseInt(input.value)
        console.log(value)
-       value -= 1
-       console.log(value)
-       input.value = value
-
-
-       }
-
-       }
+       if (value > 0) {
+        value -= 1
+        }
+        input.value = value
+         }
+         }
 
     
 
