@@ -182,3 +182,17 @@ body{
   color: bisque;
 
 }
+
+#input {
+  width: 30px;
+}
+
+.cart-name {
+font-size: small;
+font-weight: bold;
+}
+
+.cart-price {
+  font-size: x-small;
+
+}

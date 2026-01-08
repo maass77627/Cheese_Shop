@@ -30,7 +30,7 @@ const container = document.querySelector(".products");
    let cartbtn = document.getElementById("cart-btn")
   cartbtn.addEventListener("click", () => console.log("clicked"))
   
-  let button = document.getElementById("about-close")
+  // let button = document.getElementById("about-close")
   
 
   let aboutSelect = document.getElementById("shopfour")
@@ -47,9 +47,7 @@ const container = document.querySelector(".products");
 
   })
 
-   const container = document.querySelector(".products");
-      let shopbtn = document.getElementById("shop")
-      shopbtn.addEventListener("click", (e) => toggleCart(e))
+  
 
   
 
@@ -109,8 +107,7 @@ fetch("http://localhost:3000/cheeses")
   </div>
   `;
 
-  // let cartbtn = document.getElementById("cart-btn")
-  // cartbtn.addEventListener("click", () => console.log("clicked"))
+  
 
   
     let stars = card.querySelectorAll(".star")
@@ -142,11 +139,9 @@ fetch("http://localhost:3000/cheeses")
   
     
     function addToCart(product) {
-      let offCanvas = document.getElementById("offcanvas-body")
+      let offCanvas = document.getElementById("body")
       
      let item = cartItems.find(item => item.id === product.id)
-
-
       if (item) {
         item.quantity += 1 
       } else {
@@ -159,14 +154,36 @@ fetch("http://localhost:3000/cheeses")
       <h3 class="cart-name">${product.name}</h3>
      <p class="cart-price">$${product.price}</p>
       `;
-        
+        let minus = document.createElement("button")
+        minus.addEventListener("click", console.log("click minus"))
+        minus.innerHTML = "-"
+        let input = document.createElement("input")
+        input.id = "input"
+        input.value = 0
+        input.type = "text"
+        let plus = document.createElement("button")
+        plus.innerHTML = "+"
+        plus.addEventListener("click", () => handleQuantityChange())
+
         let buttontwo = document.createElement('button')
         buttontwo.innerText = "delete"
         buttontwo.addEventListener('click', (e) => deleteCartItem(e, product))
+        cartCard.appendChild(plus)
+        cartCard.appendChild(input)
+        cartCard.appendChild(minus)
         cartCard.appendChild(buttontwo)
         offCanvas.appendChild(cartCard)
         document.getElementById("count").textContent = getCartTotal(cartItems);
       }
+
+    }
+
+    function handleQuantityChange() {
+      let input = document.getElementById("input")
+       let value = input.value
+       console.log(value)
+       value + 1
+       input.value = value
 
     }
 
@@ -176,21 +193,24 @@ fetch("http://localhost:3000/cheeses")
     
     
     function deleteCartItem(e, product) {
-      e.target.parentNode.remove()
-      cartItems = cartItems.filter((item) => item.id !== product.id)
-      updateCartTotal()
+      // e.target.parentNode.remove()
+      // cartItems = cartItems.filter((item) => item.id !== product.id)
+      // updateCartTotal()
      
     }
 
     function updateCartTotal() {
-      const total = getCartTotal(cartItems)
-       document.getElementById("count").textContent = total.toFixed(2)
+      // const total = getCartTotal(cartItems)
+      // // console.log(total.toFixed(2))
+      //  document.getElementById("count").textContent = total.toFixed(2)
 
     }
 
     
     function getCartTotal(cartItems) {
-     return cartItems.reduce((acc, item) => acc + item.price, 0)
+    let total = cartItems.reduce((acc, item) => acc + item.price, 0)
+    console.log(total)
+      return total
 
     }
 
@@ -238,9 +258,7 @@ fetch("http://localhost:3000/cheeses")
       .then((json) => { 
         console.log(json)
         let reviews = json
-        // reviews.forEach((review) => {
-        //   createReviewCarousel(review)
-        // })
+        
         createReviewCarousel(reviews)
 
       })
