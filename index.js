@@ -165,7 +165,7 @@ fetch("http://localhost:3000/cheeses")
         wrapper.className = "cart-wrap"
         let minus = document.createElement("button")
         minus.addEventListener("click", (e) => { 
-          input.value > 1 ? input.value = Number(input.value) - 1 : input.value
+          input.value > 0 ? input.value = Number(input.value) - 1 : input.value
            incrementQuantity(e, product, cartItems)
         })
         // minus.addEventListener("click", (e) => handleQuantityChange(e))
@@ -228,6 +228,7 @@ fetch("http://localhost:3000/cheeses")
     
     
     function deleteCartItem(e, product) {
+      console.log(cartItems)
       console.log(e.target.parentNode.parentNode)
        e.target.parentNode.parentNode.remove()
       //  cartItems = cartItems.filter((item) => item.id !== product.id)
@@ -236,8 +237,12 @@ fetch("http://localhost:3000/cheeses")
        
        if (index !== -1) {
        cartItems = cartItems.splice(index, 1)
+       } else {
+        cartItems = cartItems
        }
-      updateCartTotal(cartItems)
+
+       console.log(cartItems)
+       updateCartTotal(cartItems)
      
     }
 
@@ -245,7 +250,7 @@ fetch("http://localhost:3000/cheeses")
       const total = getCartTotal(cartItems)
       console.log(total)
        console.log(total.toFixed(2))
-      document.getElementById("count").textContent = total.toFixed(2)
+      // document.getElementById("count").textContent = total.toFixed(2)
 
     }
 

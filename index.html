@@ -20,6 +20,40 @@
 
 
 <body>
+<!-- accordian -->
+<div class="accordion accordion-flush" id="myFirstAccordion">
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Click me
+      </button>
+    </h2>
+
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#myFirstAccordion">
+      <div class="accordion-body">
+        <strong>First accordion</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        second accordion
+      </button>
+    </h2>
+
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#myFirstAccordion">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- modal -->
  
 
   <div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static"  tabindex="-1">
@@ -99,13 +133,10 @@
   </div>
   <div id="offcanvas-body" class="offcanvas-body">
     <div id="body">
-
-    </div>
+  </div>
      <p id="count"> Cart Total: 0</p> 
-     
-  </div>
-  
-  </div>
+    </div>
+</div>
  
 
 
@@ -137,11 +168,11 @@
 </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#review-carousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+    <!-- <span class="visually-hidden">Previous</span> -->
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#review-carousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+    <!-- <span class="visually-hidden">Next</span> -->
   </button>
 </div>
 
