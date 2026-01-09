@@ -165,7 +165,12 @@ fetch("http://localhost:3000/cheeses")
         let wrapper = document.createElement("div")
         wrapper.className = "cart-wrap"
         let minus = document.createElement("button")
-        minus.addEventListener("click", (e) => handleQuantityChange(e))
+        minus.addEventListener("click", () => { 
+          input.value > 0 ? input.value = Number(input.value) - 1 : input.value
+            //  input.value - 1
+        // }
+        })
+        // minus.addEventListener("click", (e) => handleQuantityChange(e))
         minus.innerHTML = "-"
         minus.className = "minus"
         let input = document.createElement("input")
@@ -175,7 +180,8 @@ fetch("http://localhost:3000/cheeses")
         let plus = document.createElement("button")
         plus.className = "plus"
         plus.innerHTML = "+"
-        plus.addEventListener("click", (e) => handleQuantityChange(e))
+        plus.addEventListener("click", () => {input.value = Number(input.value) + 1})
+        // plus.addEventListener("click", (e) => handleQuantityChange(e))
         let trash = document.createElement("i")
         trash.className=("fa-regular fa-trash-can cart-trash")
         trash.addEventListener('click', (e) => deleteCartItem(e, product))
@@ -194,23 +200,7 @@ fetch("http://localhost:3000/cheeses")
 
     }
 
-    function handleQuantityChange(e) {
-      console.log(e.target)
-      if (e.target.innerText == "+") {
-      let input = document.getElementById("input")
-       let value = parseInt(input.value)
-       value += 1
-       input.value = value }
-       else {
-          let input = document.getElementById("input")
-       let value = parseInt(input.value)
-       console.log(value)
-       if (value > 0) {
-        value -= 1
-        }
-        input.value = value
-         }
-         }
+    
 
     
 
@@ -220,7 +210,8 @@ fetch("http://localhost:3000/cheeses")
     
     
     function deleteCartItem(e, product) {
-       e.target.parentNode.remove()
+      console.log(e.target.parentNode.parentNode)
+       e.target.parentNode.parentNode.remove()
        cartItems = cartItems.filter((item) => item.id !== product.id)
        updateCartTotal()
      
