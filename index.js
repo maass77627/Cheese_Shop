@@ -150,29 +150,45 @@ fetch("http://localhost:3000/cheeses")
       let cartCard = document.createElement("div")
       cartCard.className = "cart-card"
       cartCard.innerHTML = `
-      <img  src="${product.image}" class="cart-img" />
+      
       <h3 class="cart-name">${product.name}</h3>
      <p class="cart-price">$${product.price}</p>
       `;
+
+       let image = document.createElement("img")
+       image.src= product.image
+       image.alt="pic"
+       image.className = "cart-img"
+        let imgwrap = document.createElement("div")
+        imgwrap.className = "cart-imgwrap"
+    
+        let wrapper = document.createElement("div")
+        wrapper.className = "cart-wrap"
         let minus = document.createElement("button")
         minus.addEventListener("click", (e) => handleQuantityChange(e))
         minus.innerHTML = "-"
+        minus.className = "minus"
         let input = document.createElement("input")
         input.id = "input"
         input.value = 0
         input.type = "text"
         let plus = document.createElement("button")
+        plus.className = "plus"
         plus.innerHTML = "+"
         plus.addEventListener("click", (e) => handleQuantityChange(e))
-
-        let buttontwo = document.createElement('button')
-        buttontwo.innerText = "delete"
-        buttontwo.addEventListener('click', (e) => deleteCartItem(e, product))
-        cartCard.appendChild(plus)
-        cartCard.appendChild(input)
-        cartCard.appendChild(minus)
-        cartCard.appendChild(buttontwo)
+        let trash = document.createElement("i")
+        trash.className=("fa-regular fa-trash-can cart-trash")
+        trash.addEventListener('click', (e) => deleteCartItem(e, product))
+        
+        wrapper.appendChild(plus)
+        wrapper.appendChild(input)
+        wrapper.appendChild(minus)
+        wrapper.appendChild(trash)
+        imgwrap.appendChild(image)
+       
         offCanvas.appendChild(cartCard)
+        cartCard.appendChild(imgwrap)
+        cartCard.appendChild(wrapper)
         document.getElementById("count").textContent = getCartTotal(cartItems);
       }
 
@@ -204,16 +220,17 @@ fetch("http://localhost:3000/cheeses")
     
     
     function deleteCartItem(e, product) {
-      // e.target.parentNode.remove()
-      // cartItems = cartItems.filter((item) => item.id !== product.id)
-      // updateCartTotal()
+       e.target.parentNode.remove()
+       cartItems = cartItems.filter((item) => item.id !== product.id)
+       updateCartTotal()
      
     }
 
     function updateCartTotal() {
-      // const total = getCartTotal(cartItems)
-      // // console.log(total.toFixed(2))
-      //  document.getElementById("count").textContent = total.toFixed(2)
+      const total = getCartTotal(cartItems)
+      console.log(total)
+       console.log(total.toFixed(2))
+      document.getElementById("count").textContent = total.toFixed(2)
 
     }
 

@@ -6,7 +6,7 @@ body{
   margin: 0;
   width: 100%;
   background-color: black;
-  
+  font-family: "Pacifico", cursive;
 }
 
 
@@ -106,8 +106,8 @@ body{
     border-radius: 10px;
     background-color: #fff7ed;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+   /* align-items: center; */
     margin-bottom: 12px;
     
 }
@@ -117,10 +117,48 @@ body{
 }
 
 .cart-img {
-    margin-top: 0px;
     width: 100px;
-    height: 50px;
-    margin-right: 30px;
+    height: 100px;
+    /* align-self: flex-end;   */
+    
+}
+
+.cart-imgwrap {
+  /* align-self: center; */
+display: flex;
+align-self: flex-end;
+
+}
+
+.cart-wrap {
+  display: flex;
+  align-self: baseline; 
+}
+
+.cart-trash {
+  margin-right: 50px; 
+  margin-left: 50px;
+  
+}
+
+#input {
+  width: 30px;
+  height: 30px;
+}
+
+.cart-name {
+margin-top: 20px;
+font-size: medium;
+font-weight: bold;
+}
+
+.cart-price {
+  font-size: small;
+
+}
+
+.plus, .minus {
+  height: 30px;
 }
 
 
@@ -165,6 +203,7 @@ body{
 } 
 
 .review-image {
+
   height: 50px;
   width: 50px;
 }
@@ -183,16 +222,3 @@ body{
 
 }
 
-#input {
-  width: 30px;
-}
-
-.cart-name {
-font-size: small;
-font-weight: bold;
-}
-
-.cart-price {
-  font-size: x-small;
-
-}
