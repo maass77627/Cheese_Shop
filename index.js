@@ -215,11 +215,7 @@ fetch("http://localhost:3000/cheeses")
 
     
    function incrementDecrementQuantity(e, product) {
-    console.log(e.target.innerText)
-    console.log(cartItems)
-    console.log(product)
     if (e.target.innerText == "+") {
-      // cartItems.push(product)
     let newCartItems = cartItems.map((item) => {
         if (item.id === product.id) {
           let newquantity = item.quantity + 1
@@ -229,15 +225,7 @@ fetch("http://localhost:3000/cheeses")
           return item
         }
       })
-      console.log(newCartItems)
       cartItems = newCartItems
-    //  let newQuantity = product.quantity + 1
-    //   console.log(newQuantity)
-    //   newProduct = {...product, quantity: newQuantity}
-    //   newCartItems.push(newProduct)
-    //   console.log(product)
-    //   console.log(cartItems)
-    //   cartItems = newCartItems
       updateCartTotal(cartItems)
 
     } else {
@@ -255,21 +243,9 @@ fetch("http://localhost:3000/cheeses")
       })
       console.log(newerCartItems)
       cartItems = newerCartItems
-      // console.log(cartItems)
-      // let index = cartItems.findIndex((item) => item.id === product.id)    
-      //  console.log(index)
-      //  if (index !== -1) {
-      //  cartItems = cartItems.splice(index, 1)
-      //  console.log(cartItems)
-      //  } else {
-      //   cartItems = cartItems
-      //   console.log(cartItems)
-      //  }
       updateCartTotal(cartItems)
-      
+      }
     }
-
-   }
 
    function updateCartTotal(cartItems) {
       console.log(cartItems)
