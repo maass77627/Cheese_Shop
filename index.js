@@ -291,18 +291,19 @@ fetch("http://localhost:3000/cheeses")
      
     }
 
-    // function updateCartTotal(cartItems) {
-    //   console.log(cartItems)
-    //   const total = getCartTotal(cartItems)
-    //   console.log(total)
-    //    console.log(total.toFixed(2))
-    //   document.getElementById("count").textContent = total.toFixed(2)
-
-    // }
+   
 
     
     function getCartTotal(cartItems) {
       console.log(cartItems)
+      let totals = cartItems.map((item) => {
+        let quantity = item.quantity
+        let itemTotal = item.price * quantity
+        return itemTotal
+      })
+      let cartTotal = totals.reduce((acc, total) => acc + total, 0)
+      console.log(cartTotal)
+      return cartTotal
     // let total = cartItems.reduce((acc, item) => acc + item.price, 0)
     // console.log(total)
     //   return total
