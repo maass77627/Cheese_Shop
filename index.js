@@ -69,7 +69,7 @@ const container = document.querySelector(".products");
     .then((json) => {
       let products = json
       container.innerHTML = " "
-      products.forEach((product) => renderProductCard(product, cartItems))
+      products.forEach((product) => renderProductCard(product))
 
     })
   })
@@ -86,12 +86,12 @@ fetch("http://localhost:3000/cheeses")
   .then(cheeses => {
     console.log(cheeses)
     // container.innerHTML = " "
-    cheeses.forEach(cheese => renderProductCard(cheese, cartItems));
+    cheeses.forEach(cheese => renderProductCard(cheese));
   });
 
   
   
-  function renderProductCard(product, cartItems) {
+  function renderProductCard(product) {
      console.log(product)
      console.log(cartItems)
     let winebtn = document.createElement("i");
@@ -147,7 +147,7 @@ fetch("http://localhost:3000/cheeses")
 
   
     
-    function addToCart(product, cartItems) {
+    function addToCart(product) {
       let offCanvas = document.getElementById("body")
       console.log(cartItems)
      let item = cartItems.find(item => item.id === product.id)
@@ -176,7 +176,7 @@ fetch("http://localhost:3000/cheeses")
         minus.addEventListener("click", (e) => { 
           input.value > 0 ? input.value = Number(input.value) - 1 : input.value
           console.log(cartItems)
-           incrementQuantity(e, product, cartItems)
+           incrementDecrementQuantity(e, product, cartItems)
         })
         // minus.addEventListener("click", (e) => handleQuantityChange(e))
         minus.innerHTML = "-"
@@ -190,12 +190,12 @@ fetch("http://localhost:3000/cheeses")
         plus.innerHTML = "+"
         plus.addEventListener("click", (e) => {
           input.value = Number(input.value) + 1;
-          incrementQuantity(e, product, cartItems)
+          incrementDecrementQuantity(e, product, cartItems)
         })
         
         let trash = document.createElement("i")
         trash.className=("fa-regular fa-trash-can cart-trash")
-        trash.addEventListener('click', (e) => deleteCartItem(e, product, cartItems))
+        trash.addEventListener('click', (e) => deleteCartItem(e, product))
         
         wrapper.appendChild(plus)
         wrapper.appendChild(input)
@@ -214,7 +214,7 @@ fetch("http://localhost:3000/cheeses")
     
 
     
-   function incrementQuantity(e, product, cartItems) {
+   function incrementDecrementQuantity(e, product) {
     console.log(e.target.innerText)
     console.log(cartItems)
     console.log(product)
@@ -241,16 +241,30 @@ fetch("http://localhost:3000/cheeses")
       updateCartTotal(cartItems)
 
     } else {
-      console.log(cartItems)
-      let index = cartItems.findIndex((item) => item.id === product.id)    
-       console.log(index)
-       if (index !== -1) {
-       cartItems = cartItems.splice(index, 1)
-       console.log(cartItems)
-       } else {
-        cartItems = cartItems
-        console.log(cartItems)
-       }
+       let newerCartItems = cartItems.map((item) => {
+        if (item.id === product.id && item.quantity > 0) {
+          console.log(item.quantity)
+          let newquantity = item.quantity - 1
+          console.log(newquantity)
+            item = {...item, quantity: newquantity}
+            console.log(item)
+           return item
+        } else {
+          return item
+        }
+      })
+      console.log(newerCartItems)
+      cartItems = newerCartItems
+      // console.log(cartItems)
+      // let index = cartItems.findIndex((item) => item.id === product.id)    
+      //  console.log(index)
+      //  if (index !== -1) {
+      //  cartItems = cartItems.splice(index, 1)
+      //  console.log(cartItems)
+      //  } else {
+      //   cartItems = cartItems
+      //   console.log(cartItems)
+      //  }
       updateCartTotal(cartItems)
       
     }
