@@ -248,7 +248,7 @@ font-weight: bold;
 }
 
 .accordion .accordion-item {
-  background-color: rgb(1, 31, 31);
+  background-color: rgb(0, 9, 9);
   width: 700px;
   z-index: 100;
 }
@@ -256,4 +256,8 @@ font-weight: bold;
 
 .hidden {
   display: none;
+}
+
+.footer {
+  background-color: #000907;
 }
