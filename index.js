@@ -260,23 +260,9 @@ fetch("http://localhost:3000/cheeses")
 
     
     
-    function deleteCartItem(e, product, cartItems) {
-      console.log(cartItems)
-      console.log(e.target.parentNode.parentNode)
+    function deleteCartItem(e, product) {
        e.target.parentNode.parentNode.remove()
-      //  cartItems = cartItems.filter((item) => item.id !== product.id)
-      //  updateCartTotal()
-      let index = cartItems.findIndex((item) => item.id === product.id)    
-       
-       if (index !== -1) {
-       cartItems = cartItems.splice(index, 1)
-       console.log(cartItems)
-       } else {
-        cartItems = cartItems
-        console.log(cartItems)
-       }
-
-       console.log(cartItems)
+       cartItems = cartItems.filter((item) => item.id !== product.id)
        updateCartTotal(cartItems)
      
     }
