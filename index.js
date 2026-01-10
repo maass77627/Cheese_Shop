@@ -220,13 +220,24 @@ fetch("http://localhost:3000/cheeses")
     console.log(product)
     if (e.target.innerText == "+") {
       // cartItems.push(product)
-      cartItems = cartItems.filter((item) => item.id == product.id)
-     let newquantity = product.quantity + 1
-      console.log(newquantity)
-      newProduct = {...product, quantity: newquantity}
-      cartItems.push(newProduct)
-      console.log(product)
-      console.log(cartItems)
+    let newCartItems = cartItems.map((item) => {
+        if (item.id === product.id) {
+          let newquantity = item.quantity + 1
+            item = {...item, quantity: newquantity}
+           return item
+        } else {
+          return item
+        }
+      })
+      console.log(newCartItems)
+      cartItems = newCartItems
+    //  let newQuantity = product.quantity + 1
+    //   console.log(newQuantity)
+    //   newProduct = {...product, quantity: newQuantity}
+    //   newCartItems.push(newProduct)
+    //   console.log(product)
+    //   console.log(cartItems)
+    //   cartItems = newCartItems
       updateCartTotal(cartItems)
 
     } else {
@@ -292,9 +303,9 @@ fetch("http://localhost:3000/cheeses")
     
     function getCartTotal(cartItems) {
       console.log(cartItems)
-    let total = cartItems.reduce((acc, item) => acc + item.price, 0)
-    console.log(total)
-      return total
+    // let total = cartItems.reduce((acc, item) => acc + item.price, 0)
+    // console.log(total)
+    //   return total
 
     }
 
