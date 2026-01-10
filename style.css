@@ -209,13 +209,29 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(2, 56, 56);
+  background-color: rgb(201, 207, 207);
   height: 300px;
+  /* width: 400px; */
 }
 
+#review-carousel {
+  width: 400px;
+  
+  
+}
 
-.carousel-wrap {
-  background-color: #f9f6f3;
+.carousel-wrapper {
+   /* position: absolute; */
+   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  background-color: #023028;
+  width: 900px;
+} 
+
+.carousel-control-prev-icon .carousel-control-next-icon {
+  filter: invert(1);
 }
 
 .main-text {
@@ -225,7 +241,11 @@ font-weight: bold;
 
 }
 
-
+.accordion {
+  position: absolute;
+  margin-left: 700px;
+  margin-top: 200px;
+}
 
 .accordion .accordion-item {
   background-color: rgb(1, 31, 31);

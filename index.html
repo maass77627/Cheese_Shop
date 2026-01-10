@@ -26,14 +26,14 @@
 
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <button  class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        
+      <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Austin TX
       </button>
     </h2>
 
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" >
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" >
       <div class="accordion-body">
-        <strong>First accordion</strong>
+        <strong>Hello</strong>
         <img class="logo" src="public/cheeseandwinetwo.jpg" alt="cheese">
       </div>
     </div>
@@ -42,7 +42,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        second accordion
+        Georgetown TX
       </button>
     </h2>
 
@@ -144,6 +144,8 @@
     
   </nav>
 
+  <!-- offcanvas -->
+
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
   <div class="off-canvas-header">
     <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
@@ -160,13 +162,14 @@
 
 
 <main id="main-content">
-  <h1 id="main-text" class="main-text">Have your Cheese and Eat it Too</h1>
+  <!-- <h1 id="main-text" class="main-text">Have your Cheese and Eat it Too</h1> -->
   <img class="main-image" src="public/pairingimage.jpg" alt="cheeseplate">
   <div class="products">
   </div>
 </main>
 
-
+<!-- carousel -->
+<div class="carousel-wrapper">
 <div id="review-carousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#review-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -192,6 +195,7 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <!-- <span class="visually-hidden">Next</span> -->
   </button>
+</div>
 </div>
 
   <footer class="footer">

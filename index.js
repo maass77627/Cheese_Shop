@@ -30,7 +30,6 @@ const container = document.querySelector(".products");
    let cartbtn = document.getElementById("cart-btn")
   cartbtn.addEventListener("click", () => console.log("clicked"))
   
-  // let button = document.getElementById("about-close")
   
 
   let aboutSelect = document.getElementById("shopfour")
@@ -178,7 +177,7 @@ fetch("http://localhost:3000/cheeses")
           console.log(cartItems)
            incrementDecrementQuantity(e, product, cartItems)
         })
-        // minus.addEventListener("click", (e) => handleQuantityChange(e))
+    
         minus.innerHTML = "-"
         minus.className = "minus"
         let input = document.createElement("input")
@@ -252,7 +251,7 @@ fetch("http://localhost:3000/cheeses")
       const total = getCartTotal(cartItems)
       console.log(total)
        console.log(total.toFixed(2))
-      document.getElementById("count").textContent = total.toFixed(2)
+      document.getElementById("count").textContent = ` Cart Total : ${total.toFixed(2)}`
 
     }
     
@@ -271,7 +270,6 @@ fetch("http://localhost:3000/cheeses")
 
     
     function getCartTotal(cartItems) {
-      console.log(cartItems)
       let totals = cartItems.map((item) => {
         let quantity = item.quantity
         let itemTotal = item.price * quantity
@@ -280,11 +278,8 @@ fetch("http://localhost:3000/cheeses")
       let cartTotal = totals.reduce((acc, total) => acc + total, 0)
       console.log(cartTotal)
       return cartTotal
-    // let total = cartItems.reduce((acc, item) => acc + item.price, 0)
-    // console.log(total)
-    //   return total
-
     }
+
 
     function getPairing(cheese, apiKey) {
       console.log(cheese.name)
@@ -347,6 +342,8 @@ fetch("http://localhost:3000/cheeses")
         carouselItem.className = "carousel-item"
         carouselItem.id = `slide-${i}`
         console.log(carouselItem)
+        // let wrap = document.createElement("div")
+        // wrap.className = "carousel-wrap"
         let card = document.createElement("div")
         card.className = "review-card"
         let p = document.createElement("p")
@@ -361,8 +358,10 @@ fetch("http://localhost:3000/cheeses")
         card.appendChild(h1)
         card.appendChild(image)
         card.appendChild(p)
+        // wrap.appendChild("card")
         let staricons = stars.querySelectorAll(".star")
         card.appendChild(loadStars(staricons, review.rating))
+        carouselItem.appendChild(card)
         carouselItem.appendChild(card)
         carousel.appendChild(carouselItem)
 
@@ -371,14 +370,11 @@ fetch("http://localhost:3000/cheeses")
     }
 
      function loadStars(staricons, rating) {
-      
-        rating = Number(rating)
-         console.log(staricons)
-      staricons.forEach((star, index) => {
-        console.log(star)
-        if (index < rating) {
-      star.classList.add("filled")
-       } else {
+      rating = Number(rating)
+          staricons.forEach((star, index) => {
+            if (index < rating) {
+          star.classList.add("filled")
+            } else {
       star.classList.remove("filled")
     }
     })
