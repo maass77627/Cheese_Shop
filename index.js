@@ -1,7 +1,7 @@
 
 const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
-let cartItems = []
+cartItems = []
  
 const container = document.querySelector(".products");
 
@@ -47,6 +47,14 @@ const container = document.querySelector(".products");
 
   })
 
+  let locationSelect = document.getElementById("shopthree")
+  locationSelect.addEventListener("change", (e) => {
+    console.log(e.target)
+    console.log("changed")
+    loadLocationSelect(e)
+
+  })
+
   
 
   
@@ -61,7 +69,7 @@ const container = document.querySelector(".products");
     .then((json) => {
       let products = json
       container.innerHTML = " "
-      products.forEach((product) => renderProductCard(product))
+      products.forEach((product) => renderProductCard(product, cartItems))
 
     })
   })
@@ -78,13 +86,14 @@ fetch("http://localhost:3000/cheeses")
   .then(cheeses => {
     console.log(cheeses)
     // container.innerHTML = " "
-    cheeses.forEach(cheese => renderProductCard(cheese));
+    cheeses.forEach(cheese => renderProductCard(cheese, cartItems));
   });
 
   
   
-  function renderProductCard(product) {
+  function renderProductCard(product, cartItems) {
      console.log(product)
+     console.log(cartItems)
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
@@ -129,7 +138,7 @@ fetch("http://localhost:3000/cheeses")
         button.innerText = "Add to Cart"
         button.addEventListener('click', () => {
           console.log("clicked cart")
-          addToCart(product)})
+          addToCart(product, cartItems)})
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
@@ -138,9 +147,9 @@ fetch("http://localhost:3000/cheeses")
 
   
     
-    function addToCart(product) {
+    function addToCart(product, cartItems) {
       let offCanvas = document.getElementById("body")
-      
+      console.log(cartItems)
      let item = cartItems.find(item => item.id === product.id)
       if (item) {
         item.quantity += 1 
@@ -166,6 +175,7 @@ fetch("http://localhost:3000/cheeses")
         let minus = document.createElement("button")
         minus.addEventListener("click", (e) => { 
           input.value > 0 ? input.value = Number(input.value) - 1 : input.value
+          console.log(cartItems)
            incrementQuantity(e, product, cartItems)
         })
         // minus.addEventListener("click", (e) => handleQuantityChange(e))
@@ -185,7 +195,7 @@ fetch("http://localhost:3000/cheeses")
         
         let trash = document.createElement("i")
         trash.className=("fa-regular fa-trash-can cart-trash")
-        trash.addEventListener('click', (e) => deleteCartItem(e, product))
+        trash.addEventListener('click', (e) => deleteCartItem(e, product, cartItems))
         
         wrapper.appendChild(plus)
         wrapper.appendChild(input)
@@ -205,29 +215,51 @@ fetch("http://localhost:3000/cheeses")
 
     
    function incrementQuantity(e, product, cartItems) {
-    console.log(e.target)
+    console.log(e.target.innerText)
+    console.log(cartItems)
+    console.log(product)
     if (e.target.innerText == "+") {
-      cartItems.push(product)
+      // cartItems.push(product)
+      cartItems = cartItems.filter((item) => item.id == product.id)
+     let newquantity = product.quantity + 1
+      console.log(newquantity)
+      newProduct = {...product, quantity: newquantity}
+      cartItems.push(newProduct)
+      console.log(product)
+      console.log(cartItems)
       updateCartTotal(cartItems)
 
     } else {
       console.log(cartItems)
       let index = cartItems.findIndex((item) => item.id === product.id)    
-       
+       console.log(index)
        if (index !== -1) {
        cartItems = cartItems.splice(index, 1)
+       console.log(cartItems)
+       } else {
+        cartItems = cartItems
+        console.log(cartItems)
        }
       updateCartTotal(cartItems)
       
     }
 
    }
+
+   function updateCartTotal(cartItems) {
+      console.log(cartItems)
+      const total = getCartTotal(cartItems)
+      console.log(total)
+       console.log(total.toFixed(2))
+      document.getElementById("count").textContent = total.toFixed(2)
+
+    }
     
     
 
     
     
-    function deleteCartItem(e, product) {
+    function deleteCartItem(e, product, cartItems) {
       console.log(cartItems)
       console.log(e.target.parentNode.parentNode)
        e.target.parentNode.parentNode.remove()
@@ -237,8 +269,10 @@ fetch("http://localhost:3000/cheeses")
        
        if (index !== -1) {
        cartItems = cartItems.splice(index, 1)
+       console.log(cartItems)
        } else {
         cartItems = cartItems
+        console.log(cartItems)
        }
 
        console.log(cartItems)
@@ -246,16 +280,18 @@ fetch("http://localhost:3000/cheeses")
      
     }
 
-    function updateCartTotal(cartItems) {
-      const total = getCartTotal(cartItems)
-      console.log(total)
-       console.log(total.toFixed(2))
-      // document.getElementById("count").textContent = total.toFixed(2)
+    // function updateCartTotal(cartItems) {
+    //   console.log(cartItems)
+    //   const total = getCartTotal(cartItems)
+    //   console.log(total)
+    //    console.log(total.toFixed(2))
+    //   document.getElementById("count").textContent = total.toFixed(2)
 
-    }
+    // }
 
     
     function getCartTotal(cartItems) {
+      console.log(cartItems)
     let total = cartItems.reduce((acc, item) => acc + item.price, 0)
     console.log(total)
       return total
@@ -361,6 +397,17 @@ fetch("http://localhost:3000/cheeses")
     return stars
       }
         
+
+
+      function loadLocationSelect() {
+        console.log("location")
+        let accordion = document.getElementById("myFirstAccordion")
+        if (accordion.classList.contains("hidden")) {
+          accordion.classList.remove("hidden")
+        } else {
+        accordion.classList.add("hidden")
+        }
+      }
        
         
 

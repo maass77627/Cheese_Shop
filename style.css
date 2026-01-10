@@ -209,6 +209,13 @@ font-weight: bold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgb(2, 56, 56);
+  height: 300px;
+}
+
+
+.carousel-wrap {
+  background-color: #f9f6f3;
 }
 
 .main-text {
@@ -218,3 +225,15 @@ font-weight: bold;
 
 }
 
+
+
+.accordion .accordion-item {
+  background-color: rgb(1, 31, 31);
+  width: 700px;
+  z-index: 100;
+}
+
+
+.hidden {
+  display: none;
+}
