@@ -173,10 +173,7 @@ font-weight: bold;
 }
 
 
-#peopleimg {
-    height: 400px;
-    width: 400px;
-}
+
 
 .star {
   color: #625a5a;
@@ -261,3 +258,15 @@ font-weight: bold;
 .footer {
   background-color: #000907;
 }
+
+#modal-image {
+    height: 400px;
+    width: 400px;
+}
+
+#owner-modal {
+  display: flex;
+   justify-content: center;
+  align-items: center; 
+
+} 

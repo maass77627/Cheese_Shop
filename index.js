@@ -9,7 +9,7 @@ const container = document.querySelector(".products");
   document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
    
-    
+    const aboutModal = new bootstrap.Modal(document.getElementById("ownerModal"))
    const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
   //  const myCarousel = document.querySelector('#review-carousel')
   //  const reviewCarousel = new bootstrap.Carousel(myCarousel, {
@@ -295,8 +295,9 @@ fetch("http://localhost:3000/cheeses")
 
     function loadAboutModal(e) {
        console.log(e.target)
-
-
+      
+        
+         aboutModal.show()
      }
 
 
@@ -391,12 +392,62 @@ fetch("http://localhost:3000/cheeses")
 
       function loadLocationSelect() {
         console.log("location")
-        let accordion = document.getElementById("myFirstAccordion")
+        
+         fetch("http://localhost:3000/locations")
+         .then((response) => response.json())
+         .then((json)=> {
+          console.log(json)
+          createLocationAccordion(locations)
+         })
+
+
+        // let accordion = document.getElementById("myFirstAccordion")
+        // if (accordion.classList.contains("hidden")) {
+        //   accordion.classList.remove("hidden")
+        // } else {
+        // accordion.classList.add("hidden")
+        // }
+      }
+
+      function createLocationAccordion(locations) {
+         let accordion = document.getElementById("myFirstAccordion")
+        //  let accordionItem = document.createElement("div")
+        //  accordionItem.className = "accordion-item"
+      
+        //  let accordionHeader = document.createElement("h2")
+        //  accordionHeader.className="accordion-header"
+
+         let accordionButton = document.createElement("button")
+         let accordionBody = document.createElement("div")
+         let accordionText = document.createElement("p")
+        //  let accordionHeader = document.createElement("h2")
+         let accordionCollapse = document.createElement("div")
+
+         for (let i=0; i > locations.length; i++) {
+
+           let accordionItem = document.createElement("div")
+               accordionItem.className = "accordion-item"
+
+          let accordionHeader = document.createElement("h2")
+              accordionHeader.className="accordion-header"
+              accordionHeader.id=`heading-${i}`
+
+
+
+         }
+
+
+
+
+
+
+
         if (accordion.classList.contains("hidden")) {
           accordion.classList.remove("hidden")
         } else {
         accordion.classList.add("hidden")
         }
+
       }
        
         

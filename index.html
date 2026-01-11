@@ -21,8 +21,8 @@
 
 <body>
 <!-- accordian -->
- <div class="accordionWrap">
-<div class="accordion" id="myFirstAccordion">
+ <div id="accordianWrap" class="accordionWrap">
+<div class="accordion hidden" id="myFirstAccordion">
 
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
@@ -79,20 +79,29 @@
 </div>
 </div>
 
+<!-- modal -->
 
 <div class="modal fade" id="ownerModal" data-bs-backdrop="static" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 <div class="modal-content">
-    <div class="modal-header">
-    <h5 id="title" class="modal-title">Modal title</h5>
+    <!-- <div class="modal-header"> -->
+    <h5 id="title" class="modal-title">About The Owners</h5>
      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-   </div>
+   <!-- </div> -->
 
     <div class="modal-body">
-         <p id="text"> Hello This is a modal</p>
-         <p id="texttwo"></p>
-        <strong> <span id="spantwo">Suggested Wine:</span></strong>
-         <span id="span"></span>
+      <p id="aboutowner">
+        The owners are a group of many multi-taleneted friends.
+        They all joined together wanting to create a spot in their 
+        neighborhood where people could come together and build community.
+        They thought a charcuterie shop would be a great place for people
+        to enjoy eachothers company as well as the many delicious treats available.
+        In the group are farmers, gardeners, chefs etc and they love to use fresh 
+        self-grown produce in their ingredients.
+      </p>
+         
+        <img id="modal-image" src="public/people.jpg" alt="owner">
+        
        </div>
        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -107,7 +116,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 id="title" class="modal-title">Modal title</h5>
+        <h5 id="title" class="modal-title">Wine Pairing</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       
