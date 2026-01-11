@@ -10,7 +10,7 @@ const container = document.querySelector(".products");
     console.log("DOM loaded");
    
     const aboutModal = new bootstrap.Modal(document.getElementById("ownerModal"))
-   const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
+    const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
   //  const myCarousel = document.querySelector('#review-carousel')
   //  const reviewCarousel = new bootstrap.Carousel(myCarousel, {
   //   interval: 2000,
@@ -397,31 +397,14 @@ fetch("http://localhost:3000/cheeses")
          .then((response) => response.json())
          .then((json)=> {
           console.log(json)
+          let locations = json
           createLocationAccordion(locations)
          })
-
-
-        // let accordion = document.getElementById("myFirstAccordion")
-        // if (accordion.classList.contains("hidden")) {
-        //   accordion.classList.remove("hidden")
-        // } else {
-        // accordion.classList.add("hidden")
-        // }
       }
 
       function createLocationAccordion(locations) {
+        console.log(locations)
          let accordion = document.getElementById("myFirstAccordion")
-        //  let accordionItem = document.createElement("div")
-        //  accordionItem.className = "accordion-item"
-      
-        //  let accordionHeader = document.createElement("h2")
-        //  accordionHeader.className="accordion-header"
-
-         let accordionButton = document.createElement("button")
-         let accordionBody = document.createElement("div")
-         let accordionText = document.createElement("p")
-        //  let accordionHeader = document.createElement("h2")
-         let accordionCollapse = document.createElement("div")
 
          for (let i=0; i > locations.length; i++) {
 
@@ -432,17 +415,60 @@ fetch("http://localhost:3000/cheeses")
               accordionHeader.className="accordion-header"
               accordionHeader.id=`heading-${i}`
 
+          let accordionButton = document.createElement("button")
+          accordionButton.className = "accordion-button collapsed"
+          
+          accordionButton.setAttribute("type", "button")
+          accordionButton.setAttribute("data-bs-toggle", "collapse")
+          accordionButton.setAttribute("data-bs-target", `#collapse-${i}`)
+          accordionButton.setAttribute("aria-expanded", "false")
+          accordionButton.setAttribute("aria-controls", `#collapse-${i}`)
+          
+          accordionButton.innerText=`${location.city}, ${location.state} `
 
+
+          let accordionCollapse = document.createElement("div")
+          accordionCollapse.id=`collapse-${i}`
+          accordionCollapse.className="accordion-collapse collapse"
+          accordionCollapse.setAttribute("aria-labelledby", `#heading-${i}`)
+          
+
+          let accordionBody = document.createElement("div")
+          accordionBody.className="accordion-body"
+
+          let accordionText = document.createElement("p")
+          accordionText.className = "accordion-text"
+          accordionText.innerText = location.address
+
+          let accordionTextTwo = document.createElement("p")
+          accordionTextTwo.className = "accordion-text"
+          accordionTextTwo.innerText = location.hours
+
+          let accordionTextThree = document.createElement("p")
+          accordionTextThree.className = "accordion-text"
+          accordionTextThree.innerText = location.phone
+
+          let accordionTextFour = document.createElement("p")
+          accordionTextFour.className = "accordion-text"
+          accordionTextFour.innerText = location.description
+
+
+          
+          accordionHeader.appendChild(accordionButton)
+          accordionItem.appendChild(accordionHeader)
+          accordionBody.appendChild(accordionText)
+          accordionBody.appendChild(accordionTextTwo)
+          accordionBody.appendChild(accordionTextThree)
+          accordionBody.appendChild(accordionTextFour)
+          accordionCollapse.appendChild(accordionBody)
+          accordionItem.appendChild(accordionCollapse)
+
+
+          accordion.appendChild(accordionItem)
 
          }
 
-
-
-
-
-
-
-        if (accordion.classList.contains("hidden")) {
+       if (accordion.classList.contains("hidden")) {
           accordion.classList.remove("hidden")
         } else {
         accordion.classList.add("hidden")
