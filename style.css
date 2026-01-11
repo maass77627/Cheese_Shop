@@ -19,11 +19,11 @@ body{
     height: 250px;
 }
 
-.main-text {
+/* .main-text {
   align-self: center;
   margin-left: 300px;
   margin-top: 100px;
-}
+} */
 
 
 .my-nav {
@@ -235,6 +235,7 @@ font-weight: bold;
 .main-text {
   font-weight: bolder;
   position: absolute;
+  margin-left: 200px;
   color: bisque;
 
 }
@@ -243,6 +244,7 @@ font-weight: bold;
    position: absolute; 
   margin-left: 700px;
   margin-top: 200px;
+  z-index: 99;
 }
 
 .accordion .accordion-item {
@@ -250,6 +252,13 @@ font-weight: bold;
   width: 700px;
   /* z-index: 100; */
 }
+
+.accordion .accordion-header {
+  background-color: bisque;
+  width: 700px;
+  /* z-index: 100; */
+}
+
 
 
 .hidden {

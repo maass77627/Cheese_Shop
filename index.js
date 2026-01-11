@@ -379,17 +379,24 @@ fetch("http://localhost:3000/cheeses")
         
 
 
-      function loadLocationSelect() {
+      function loadLocationSelect(e) {
           fetch("http://localhost:3000/locations")
          .then((response) => response.json())
          .then((json)=> {
           let locations = json
-          createLocationAccordion(locations)
+          createLocationAccordion(e, locations)
          })
       }
 
-      function createLocationAccordion(locations) {
+      function createLocationAccordion(e, locations) {
+        console.log(e.target.value)
         console.log(locations)
+
+        // if (e.target.value === "Austin") {
+
+        // } else {
+
+        // }
          let accordion = document.getElementById("myFirstAccordion")
             accordion.innerHTML = ""
          for (let i=0; i < locations.length; i++) {
@@ -417,6 +424,9 @@ fetch("http://localhost:3000/cheeses")
           let accordionCollapse = document.createElement("div")
           accordionCollapse.id=`collapse-${i}`
           accordionCollapse.className="accordion-collapse collapse"
+          if (e.target.value === "Austin" && i === 0) {
+            accordionCollapse.classList.add("show")
+          }
           accordionCollapse.setAttribute("aria-labelledby", `heading-${i}`)
           
 
