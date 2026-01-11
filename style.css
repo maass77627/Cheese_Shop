@@ -2,6 +2,7 @@ body{
   display: flex;
   flex-direction: column;
   font-family: "Playfair Display", serif;
+  font-weight: 50;
   background-color: white;
   margin: 0;
   width: 100%;
@@ -165,7 +166,7 @@ font-weight: bold;
     font-size: 30px;
     color: black;
     z-index: 999;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .glassbtn:hover {
@@ -239,7 +240,7 @@ font-weight: bold;
 }
 
 .accordion {
-  position: absolute;
+   position: absolute; 
   margin-left: 700px;
   margin-top: 200px;
 }
@@ -247,7 +248,7 @@ font-weight: bold;
 .accordion .accordion-item {
   background-color: rgb(0, 9, 9);
   width: 700px;
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 
@@ -264,9 +265,14 @@ font-weight: bold;
     width: 400px;
 }
 
-#owner-modal {
+.owner-modal .modal-body {
   display: flex;
-   justify-content: center;
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;     
+  justify-content: center; 
+  text-align: center;
 
 } 
+
+
+

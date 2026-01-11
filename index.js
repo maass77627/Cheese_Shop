@@ -3,19 +3,14 @@ const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 cartItems = []
  
-const container = document.querySelector(".products");
+// const container = document.querySelector(".products");
 
-
-  document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
-   
-    const aboutModal = new bootstrap.Modal(document.getElementById("ownerModal"))
+   const container = document.querySelector(".products");
+    const aboutModal = new bootstrap.Modal(document.getElementById("owner-modal"))
     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
-  //  const myCarousel = document.querySelector('#review-carousel')
-  //  const reviewCarousel = new bootstrap.Carousel(myCarousel, {
-  //   interval: 2000,
-  //   wrap: false
-  //  })
+ 
 
    stars = document.createElement("div")
    stars.className = "star-rating"
@@ -115,9 +110,6 @@ fetch("http://localhost:3000/cheeses")
   </div>
   `;
 
-  
-
-  
     let stars = card.querySelectorAll(".star")
   
     stars.forEach((star, index) => {
@@ -131,7 +123,6 @@ fetch("http://localhost:3000/cheeses")
       
      })
 
-    
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
@@ -303,9 +294,9 @@ fetch("http://localhost:3000/cheeses")
 
 
    function createWineModal(pairing) {
-      let header = document.getElementById("title")
-      let p = document.getElementById("text")
-      let span = document.getElementById("span")
+      let header = document.getElementById("wine-title")
+      let p = document.getElementById("wine-text")
+      let span = document.getElementById("wine-span")
       if (pairing.pairedWines && pairing.pairingText && pairing.productMatches[0].title) {
       header.innerText = pairing.pairedWines
       p.innerText = pairing.pairingText
@@ -335,10 +326,8 @@ fetch("http://localhost:3000/cheeses")
    function createReviewCarousel(reviews) {
         console.log(reviews)
     const carousel = document.querySelector(".carousel-inner")
-
-      carousel.innerHTML = ""
-
-    for (let i = 0; i < reviews.length; i++) {
+       carousel.innerHTML = ""
+     for (let i = 0; i < reviews.length; i++) {
       let review = reviews[i]
 
       let carouselItem = document.createElement("div")
@@ -391,12 +380,9 @@ fetch("http://localhost:3000/cheeses")
 
 
       function loadLocationSelect() {
-        console.log("location")
-        
-         fetch("http://localhost:3000/locations")
+          fetch("http://localhost:3000/locations")
          .then((response) => response.json())
          .then((json)=> {
-          console.log(json)
           let locations = json
           createLocationAccordion(locations)
          })
@@ -405,8 +391,9 @@ fetch("http://localhost:3000/cheeses")
       function createLocationAccordion(locations) {
         console.log(locations)
          let accordion = document.getElementById("myFirstAccordion")
-
-         for (let i=0; i > locations.length; i++) {
+            accordion.innerHTML = ""
+         for (let i=0; i < locations.length; i++) {
+          let location = locations[i]
 
            let accordionItem = document.createElement("div")
                accordionItem.className = "accordion-item"
@@ -422,7 +409,7 @@ fetch("http://localhost:3000/cheeses")
           accordionButton.setAttribute("data-bs-toggle", "collapse")
           accordionButton.setAttribute("data-bs-target", `#collapse-${i}`)
           accordionButton.setAttribute("aria-expanded", "false")
-          accordionButton.setAttribute("aria-controls", `#collapse-${i}`)
+          accordionButton.setAttribute("aria-controls", `collapse-${i}`)
           
           accordionButton.innerText=`${location.city}, ${location.state} `
 
@@ -430,7 +417,7 @@ fetch("http://localhost:3000/cheeses")
           let accordionCollapse = document.createElement("div")
           accordionCollapse.id=`collapse-${i}`
           accordionCollapse.className="accordion-collapse collapse"
-          accordionCollapse.setAttribute("aria-labelledby", `#heading-${i}`)
+          accordionCollapse.setAttribute("aria-labelledby", `heading-${i}`)
           
 
           let accordionBody = document.createElement("div")
@@ -469,9 +456,9 @@ fetch("http://localhost:3000/cheeses")
          }
 
        if (accordion.classList.contains("hidden")) {
-          accordion.classList.remove("hidden")
+            accordion.classList.remove("hidden")
         } else {
-        accordion.classList.add("hidden")
+            accordion.classList.add("hidden")
         }
 
       }
