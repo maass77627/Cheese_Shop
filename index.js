@@ -11,11 +11,11 @@ const container = document.querySelector(".products");
    
     
    const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
-   const myCarousel = document.querySelector('#review-carousel')
-   const reviewCarousel = new bootstrap.Carousel(myCarousel, {
-    interval: 2000,
-    wrap: false
-   })
+  //  const myCarousel = document.querySelector('#review-carousel')
+  //  const reviewCarousel = new bootstrap.Carousel(myCarousel, {
+  //   interval: 2000,
+  //   wrap: false
+  //  })
 
    stars = document.createElement("div")
    stars.className = "star-rating"
@@ -331,43 +331,49 @@ fetch("http://localhost:3000/cheeses")
       })
     }
 
-    function createReviewCarousel(reviews) {
-      console.log(reviews)
-      const carousel = document.querySelector(".carousel-inner")
-    //  const carousel = document.querySelector("carousel-inner")
-      for (let i = 0; i < reviews.length; i++) {
-        let review = reviews[i]
-        // let carouselItem = document.getElementById(`slide-${i}`)
-        let carouselItem = document.createElement("div")
-        carouselItem.className = "carousel-item"
-        carouselItem.id = `slide-${i}`
-        console.log(carouselItem)
-        // let wrap = document.createElement("div")
-        // wrap.className = "carousel-wrap"
-        let card = document.createElement("div")
-        card.className = "review-card"
-        let p = document.createElement("p")
-        let h1 = document.createElement("h1")
-        let image = document.createElement("img")
-        h1.innerText = review.author
-        p.innerText = review.comment
-        image.src = review.image
-        image.alt = "review"
-        image.className = "review-image"
-        
-        card.appendChild(h1)
-        card.appendChild(image)
-        card.appendChild(p)
-        // wrap.appendChild("card")
-        let staricons = stars.querySelectorAll(".star")
-        card.appendChild(loadStars(staricons, review.rating))
-        carouselItem.appendChild(card)
-        carouselItem.appendChild(card)
-        carousel.appendChild(carouselItem)
+   function createReviewCarousel(reviews) {
+        console.log(reviews)
+    const carousel = document.querySelector(".carousel-inner")
 
+      carousel.innerHTML = ""
 
-      }
+    for (let i = 0; i < reviews.length; i++) {
+      let review = reviews[i]
+
+      let carouselItem = document.createElement("div")
+    carouselItem.className = "carousel-item"
+
+    if (i === 0) {
+      carouselItem.classList.add("active")
     }
+
+    carouselItem.id = `slide-${i}`
+
+    let card = document.createElement("div")
+    card.className = "review-card"
+
+    let h1 = document.createElement("h1")
+    let p = document.createElement("p")
+    let image = document.createElement("img")
+
+    h1.innerText = review.author
+    p.innerText = review.comment
+    image.src = review.image
+    image.alt = "review"
+    image.className = "review-image"
+
+    card.appendChild(h1)
+    card.appendChild(image)
+    card.appendChild(p)
+
+    let staricons = stars.querySelectorAll(".star")
+    card.appendChild(loadStars(staricons, review.rating))
+
+    carouselItem.appendChild(card)
+
+    carousel.appendChild(carouselItem)
+  }
+}
 
      function loadStars(staricons, rating) {
       rating = Number(rating)
