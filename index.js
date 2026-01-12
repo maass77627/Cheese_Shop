@@ -392,11 +392,7 @@ fetch("http://localhost:3000/cheeses")
         console.log(e.target.value)
         console.log(locations)
 
-        // if (e.target.value === "Austin") {
-
-        // } else {
-
-        // }
+      
          let accordion = document.getElementById("myFirstAccordion")
             accordion.innerHTML = ""
          for (let i=0; i < locations.length; i++) {
@@ -426,6 +422,9 @@ fetch("http://localhost:3000/cheeses")
           accordionCollapse.className="accordion-collapse collapse"
           if (e.target.value === "Austin" && i === 0) {
             accordionCollapse.classList.add("show")
+          } else if (e.target.value === "Georgetown" && i === 1) {
+            accordionCollapse.classList.add("show")
+
           }
           accordionCollapse.setAttribute("aria-labelledby", `heading-${i}`)
           
