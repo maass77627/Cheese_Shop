@@ -503,11 +503,21 @@ fetch("http://localhost:3000/cheeses")
        
         
 function writeReview() {
-  let form = document.getElementById("review-form")
+  let form = document.getElementById("form-wrapper")
+  form.classList.remove("hidden")
   console.log(form)
-  let stars = document.getElementsByClassName("click-stars")
+  let stars = document.querySelectorAll(".click-star")
   console.log(stars)
+  stars.forEach((star) => star.addEventListener("click", () => changeReviewStars(star)))
 
+}
+
+function changeReviewStars(star) {
+  if (star.style.color === "black") {
+  star.style.color = "yellow"
+  } else {
+    star.style.color = "black"
+  }
 }
 
       

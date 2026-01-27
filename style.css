@@ -262,7 +262,8 @@ font-weight: bold;
 
 
 .hidden {
-  display: none;
+  visibility: hidden;
+  /* display: none; */
 }
 
 .footer {
@@ -301,8 +302,13 @@ font-weight: bold;
   top: 300px;
 
   left: 600px;
-  background-color: #f9f6f3;
+  background-color: #a65c12;
   height: 200px;
-  width: 200px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
 }
 
