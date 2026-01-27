@@ -31,18 +31,18 @@
 </div>
  
 
-<!-- modal -->
+<!--about modal -->
 
 <div class="modal fade owner-modal" id="owner-modal" data-bs-backdrop="static" tabindex="-1">
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-<div class="modal-content">
+<div id="modal-dialog" class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div id="modal-content" class="modal-content">
     
     <h5 id="owner-title" class="modal-title">About The Owners</h5>
      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
 
     <div class="modal-body">
-      <p id="aboutowner">
+      <p id="about-owner">
         The owners are a group of many multi-talented friends.
         They all joined together wanting to create a spot in their 
         neighborhood where people could come together and build community.
@@ -58,10 +58,11 @@
        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
      </div>
+
 </div>
 </div>
 </div>
-<!-- modal -->
+<!-- wine modal -->
  
 
   <div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static"  tabindex="-1">
@@ -96,7 +97,7 @@
     <option value="cheeses">Cheeses</option>
     <option value="charcuteries">Charcuteries</option>
     <option value="wines">Wines</option>
-    <option value="sandwiches">Sandwiches</option>
+    <!-- <option value="sandwiches">Sandwiches</option> -->
     </select>
     </div>
 
@@ -104,7 +105,7 @@
     <select id="shoptwo" class="styled-select" name="shop">
     <option value="reviews">Reviews</option>
     <option value="readreviews">Read Reviews</option> 
-    <option value="writereview">Write Review</option>
+    <!-- <option value="writereview">Write Review</option> -->
     </select>
     </div>
 
@@ -157,6 +158,19 @@
   </div>
 </main>
 
+<!-- form -->
+<div class="form-wrapper">
+<form id="review-form" class="review-form">
+  <input type="text" name="review"/>
+   <i class="fa-regular fa-star star click-star" id="star1"></i>
+   <i class="fa-regular fa-star star click-star" id="star2"></i>
+   <i class="fa-regular fa-star star click-star" id="star3"></i>
+   <i class="fa-regular fa-star star click-star" id="star4"></i>
+   <i class="fa-regular fa-star star click-star" id="star5"></i>
+  <button type="submit">Submit</button>
+
+</form>
+</div>
 
 
 

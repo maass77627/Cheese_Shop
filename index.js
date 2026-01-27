@@ -35,11 +35,10 @@ cartItems = []
 
   let reviewSelect = document.getElementById("shoptwo")
   reviewSelect.addEventListener("change", (e) => {
-    console.log(e.target)
+    console.log(e.target.value)
     console.log("changed")
     fetchReviewData(e)
-
-  })
+   })
 
   let locationSelect = document.getElementById("shopthree")
   locationSelect.addEventListener("change", (e) => {
@@ -123,12 +122,17 @@ fetch("http://localhost:3000/cheeses")
       
      })
 
+     let reviewButton =  document.createElement("i")
+      reviewButton.className="fa-solid fa-pen-to-square review-button"
+     reviewButton.addEventListener("click", () => writeReview())
+
         let button = document.createElement("button")
         button.className = "product-btn"
         button.innerText = "Add to Cart"
         button.addEventListener('click', () => {
           console.log("clicked cart")
           addToCart(product, cartItems)})
+          card.appendChild(reviewButton)
         card.appendChild(winebtn)
         card.appendChild(button)
         container.appendChild(card);
@@ -215,41 +219,33 @@ fetch("http://localhost:3000/cheeses")
           return item
         }
       })
+      
       cartItems = newCartItems
-      updateCartTotal(cartItems)
+      updateCartTotal(newCartItems)
 
     } else {
        let newerCartItems = cartItems.map((item) => {
         if (item.id === product.id && item.quantity > 0) {
-          console.log(item.quantity)
           let newquantity = item.quantity - 1
-          console.log(newquantity)
             item = {...item, quantity: newquantity}
-            console.log(item)
            return item
         } else {
           return item
         }
       })
-      console.log(newerCartItems)
-      cartItems = newerCartItems
-      updateCartTotal(cartItems)
+      
+       cartItems = newerCartItems
+      updateCartTotal(newerCartItems)
       }
     }
 
    function updateCartTotal(cartItems) {
-      console.log(cartItems)
       const total = getCartTotal(cartItems)
-      console.log(total)
-       console.log(total.toFixed(2))
       document.getElementById("count").textContent = ` Cart Total : ${total.toFixed(2)}`
 
     }
     
-    
-
-    
-    
+  
     function deleteCartItem(e, product) {
        e.target.parentNode.parentNode.remove()
        cartItems = cartItems.filter((item) => item.id !== product.id)
@@ -257,10 +253,7 @@ fetch("http://localhost:3000/cheeses")
      
     }
 
-   
-
-    
-    function getCartTotal(cartItems) {
+   function getCartTotal(cartItems) {
       let totals = cartItems.map((item) => {
         let quantity = item.quantity
         let itemTotal = item.price * quantity
@@ -285,7 +278,43 @@ fetch("http://localhost:3000/cheeses")
     }
 
     function loadAboutModal(e) {
-       console.log(e.target)
+       console.log(e.target.value)
+      //  let aboutModal = document.getElementById("owner-modal")
+      //  let aboutDialog = document.getElementById("modal-dialog")
+      //  let aboutContent = document.getElementById("modal-content")
+      //  let modalTitle = document.createElement("h5")
+      //  modalTitle.className="modal-title"
+      //  let modalText = document.createElement("p")
+      //  modalText.id="about-owner"
+      //  let modalImage = document.createElement("img")
+      //  modalImage.id="modal-image"
+      //  modalImage.src="public/people.jpg"
+      //  modalImage.alt = "owner"
+
+      //  if (e.target.value === "Owners") {
+      //   modalTitle.innerText = "About the Owner"
+      //   modalText.innerText = `The owners are a group of many multi-talented friends.
+      //   They all joined together wanting to create a spot in their 
+      //   neighborhood where people could come together and build community.
+      //   They thought a charcuterie shop would be a great place for people
+      //   to enjoy eachothers company as well as the many delicious treats available.
+      //   In the group are farmers, gardeners, chefs etc and they love to use fresh 
+      //   self-grown ingredients in their products.`
+
+      //  } else if (e.target.value === "Contact") {
+      //   modalTitle.innerText = "Contact Us"
+      //   modalText.innerText = `Phone: 1-555-467-3288
+      //   email: "thepairinghouse@gmail.com"
+      //   `
+
+      //  } else {
+      //   aboutModal.classList.add("hidden")
+
+      //  }
+
+      //  aboutContent.appendChild(modalTitle)
+      //  aboutContent.appendChild(modalText)
+      //  aboutContent.appendChild(modalImage)
       
         
          aboutModal.show()
@@ -473,7 +502,13 @@ fetch("http://localhost:3000/cheeses")
       }
        
         
+function writeReview() {
+  let form = document.getElementById("review-form")
+  console.log(form)
+  let stars = document.getElementsByClassName("click-stars")
+  console.log(stars)
 
+}
 
       
       

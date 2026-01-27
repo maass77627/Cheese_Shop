@@ -197,8 +197,6 @@
       "address": "123 South Congress Ave",
       "hours": "Mon–Sun 10am–9pm",
       "phone": "(512) 555-1234",
-      "lat": 30.2672,
-      "lng": -97.7431,
       "description": "Local Texas charcuterie and tasting events."
     },
     {
@@ -208,8 +206,6 @@
       "address": "123 South Congress Ave",
       "hours": "Mon–Sun 10am–9pm",
       "phone": "(512) 555-1234",
-      "lat": 30.2672,
-      "lng": -97.7431,
       "description": "Local Texas charcuterie and tasting events."
     }
   ]
