@@ -312,3 +312,9 @@ font-weight: bold;
   border-radius: 20px;
 }
 
+.form-close {
+  position: absolute;
+  top: 0px; 
+  left: 270px;
+}
+

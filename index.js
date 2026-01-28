@@ -9,16 +9,17 @@ let selectedRating
 
  document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM loaded");
-   const container = document.querySelector(".products");
+    const container = document.querySelector(".products");
     const aboutModal = new bootstrap.Modal(document.getElementById("owner-modal"))
     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
- const form = document.querySelector('form')
- console.log(form)
- form.addEventListener("submit", (e) => {
-  console.log(e)
-  e.preventDefault()
-  handleFormSubmit(e)
- })
+    const form = document.querySelector('form')
+    const formWrapper = document.getElementById("form-wrapper")
+    
+    form.addEventListener("submit", (e) => {
+     console.log(e)
+     e.preventDefault()
+     handleFormSubmit(e)
+  })
 
  let formSelect = document.getElementById("form-select")
  formSelect.addEventListener("change", (e) => {
@@ -41,6 +42,11 @@ let selectedRating
    let cartbtn = document.getElementById("cart-btn")
   cartbtn.addEventListener("click", () => console.log("clicked"))
   
+
+  let closeButton = document.getElementById("form-close")
+  closeButton.addEventListener("click", () => {
+   formWrapper.classList.add("hidden")
+  })
   
 
   let aboutSelect = document.getElementById("shopfour")
@@ -49,12 +55,12 @@ let selectedRating
     loadAboutModal(e)
   })
 
-  let reviewSelect = document.getElementById("shoptwo")
-  reviewSelect.addEventListener("change", (e) => {
-    console.log(e.target.value)
-    console.log("changed")
-    fetchReviewData(e)
-   })
+  // let reviewSelect = document.getElementById("shoptwo")
+  // reviewSelect.addEventListener("change", (e) => {
+  //   console.log(e.target.value)
+  //   console.log("changed")
+  //   fetchReviewData(e)
+  //  })
 
   let locationSelect = document.getElementById("shopthree")
   locationSelect.addEventListener("change", (e) => {
@@ -88,6 +94,20 @@ fetch("http://localhost:3000/cheeses")
     // container.innerHTML = " "
     cheeses.forEach(cheese => renderProductCard(cheese));
   });
+
+   fetch('http://localhost:3000/reviews')
+      .then((response) => response.json())
+      .then((json) => { 
+        console.log(json)
+        let allReviews = json
+        // let reviews = json
+        allReviews.forEach((review) => {
+          reviews.push(review)
+        })
+        // reviews.push()
+        createReviewCarousel(reviews)
+
+      })
 
   
   
@@ -132,7 +152,7 @@ fetch("http://localhost:3000/cheeses")
 
      let reviewButton =  document.createElement("i")
       reviewButton.className="fa-solid fa-pen-to-square review-button"
-     reviewButton.addEventListener("click", () => writeReview(product))
+      reviewButton.addEventListener("click", () => writeReview(product))
 
         let button = document.createElement("button")
         button.className = "product-btn"
@@ -310,21 +330,21 @@ fetch("http://localhost:3000/cheeses")
     }
 
 
-    function fetchReviewData() {
-      fetch('http://localhost:3000/reviews')
-      .then((response) => response.json())
-      .then((json) => { 
-        console.log(json)
-        let allReviews = json
-        // let reviews = json
-        allReviews.forEach((review) => {
-          reviews.push(review)
-        })
-        // reviews.push()
-        createReviewCarousel(reviews)
+    // function fetchReviewData() {
+    //   fetch('http://localhost:3000/reviews')
+    //   .then((response) => response.json())
+    //   .then((json) => { 
+    //     console.log(json)
+    //     let allReviews = json
+    //     // let reviews = json
+    //     allReviews.forEach((review) => {
+    //       reviews.push(review)
+    //     })
+    //     // reviews.push()
+    //     createReviewCarousel(reviews)
 
-      })
-    }
+    //   })
+    // }
 
    function createReviewCarousel(reviews) {
         console.log(reviews)
@@ -477,42 +497,14 @@ fetch("http://localhost:3000/cheeses")
        
         
 function writeReview(product) {
-  console.log(product)
   selectedProduct = product
   let form = document.getElementById("form-wrapper")
   form.classList.remove("hidden")
-  console.log(form)
-  let stars = document.querySelectorAll(".click-star")
-  console.log(stars)
-  stars.forEach((star) => {
-    star.style.color = "black"
-    star.addEventListener("click", () => changeReviewStars(star))
-  })
 
 }
 
-function changeReviewStars(star) {
-  if (star.style.color === "black") {
-  star.style.color = "yellow"
-  } else {
-    star.style.color = "black"
-  }
-}
 
 function handleFormSubmit(e) {
-  console.log(selectedRating)
-  console.log(e.target)
-  console.log(e.target.author.value)
-  console.log(e.target.comment.value)
-  // console.log(e.target.rating.value)
-  // console.log(e.target.star)
-  // console.log("form submitted")
-  // console.log(e.target.parentNode)
-  // let author = e.target.author.value
-  // let comment = e.target.comment.value
-  // let productId = selectedProduct.id
-  // let image = selectedProduct.image
-  // let rating = selectedRating
   let newReview = {
     author: e.target.author.value,
     comment: e.target.comment.value,
@@ -520,11 +512,8 @@ function handleFormSubmit(e) {
     image: selectedProduct.image,
     rating: selectedRating
   }
-
   reviews.push(newReview)
-  console.log(reviews)
-
-
+  createReviewCarousel(reviews)
 }
 
       
