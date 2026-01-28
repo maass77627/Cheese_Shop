@@ -2,7 +2,9 @@
 const apiKey = "49dddcc0dc104b41af87dbe0cd34cca7"
 
 cartItems = []
- 
+let reviews = []
+let selectedProduct
+let selectedRating
 // const container = document.querySelector(".products");
 
  document.addEventListener("DOMContentLoaded", () => {
@@ -11,11 +13,20 @@ cartItems = []
     const aboutModal = new bootstrap.Modal(document.getElementById("owner-modal"))
     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
  const form = document.querySelector('form')
- form.addEventLisener(("submit", (e) => {
+ console.log(form)
+ form.addEventListener("submit", (e) => {
   console.log(e)
   e.preventDefault()
   handleFormSubmit(e)
- }))
+ })
+
+ let formSelect = document.getElementById("form-select")
+ formSelect.addEventListener("change", (e) => {
+  e.preventDefault()
+  console.log(e.target.value)
+  selectedRating = e.target.value
+
+ })
 
    stars = document.createElement("div")
    stars.className = "star-rating"
@@ -53,9 +64,6 @@ cartItems = []
 
   })
 
-  
-
-  
 
   let selectForm = document.getElementById("shop")
       selectForm.addEventListener('change', (e) => {
@@ -73,12 +81,6 @@ cartItems = []
   })
 
   
-
-
-  
-
-
-
 fetch("http://localhost:3000/cheeses")
   .then(res => res.json())
   .then(cheeses => {
@@ -92,6 +94,7 @@ fetch("http://localhost:3000/cheeses")
   function renderProductCard(product) {
      console.log(product)
      console.log(cartItems)
+    
     let winebtn = document.createElement("i");
     winebtn.classList.add("fa-solid", "fa-wine-glass", "glassbtn");
    
@@ -129,7 +132,7 @@ fetch("http://localhost:3000/cheeses")
 
      let reviewButton =  document.createElement("i")
       reviewButton.className="fa-solid fa-pen-to-square review-button"
-     reviewButton.addEventListener("click", () => writeReview())
+     reviewButton.addEventListener("click", () => writeReview(product))
 
         let button = document.createElement("button")
         button.className = "product-btn"
@@ -312,8 +315,12 @@ fetch("http://localhost:3000/cheeses")
       .then((response) => response.json())
       .then((json) => { 
         console.log(json)
-        let reviews = json
-        
+        let allReviews = json
+        // let reviews = json
+        allReviews.forEach((review) => {
+          reviews.push(review)
+        })
+        // reviews.push()
         createReviewCarousel(reviews)
 
       })
@@ -469,14 +476,16 @@ fetch("http://localhost:3000/cheeses")
       }
        
         
-function writeReview() {
+function writeReview(product) {
+  console.log(product)
+  selectedProduct = product
   let form = document.getElementById("form-wrapper")
   form.classList.remove("hidden")
   console.log(form)
   let stars = document.querySelectorAll(".click-star")
   console.log(stars)
   stars.forEach((star) => {
-    star.style.color === "black"
+    star.style.color = "black"
     star.addEventListener("click", () => changeReviewStars(star))
   })
 
@@ -491,8 +500,30 @@ function changeReviewStars(star) {
 }
 
 function handleFormSubmit(e) {
+  console.log(selectedRating)
   console.log(e.target)
-  console.log("form submitted")
+  console.log(e.target.author.value)
+  console.log(e.target.comment.value)
+  // console.log(e.target.rating.value)
+  // console.log(e.target.star)
+  // console.log("form submitted")
+  // console.log(e.target.parentNode)
+  // let author = e.target.author.value
+  // let comment = e.target.comment.value
+  // let productId = selectedProduct.id
+  // let image = selectedProduct.image
+  // let rating = selectedRating
+  let newReview = {
+    author: e.target.author.value,
+    comment: e.target.comment.value,
+    productId: selectedProduct.id,
+    image: selectedProduct.image,
+    rating: selectedRating
+  }
+
+  reviews.push(newReview)
+  console.log(reviews)
+
 
 }
 
