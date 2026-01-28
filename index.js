@@ -330,22 +330,6 @@ fetch("http://localhost:3000/cheeses")
     }
 
 
-    // function fetchReviewData() {
-    //   fetch('http://localhost:3000/reviews')
-    //   .then((response) => response.json())
-    //   .then((json) => { 
-    //     console.log(json)
-    //     let allReviews = json
-    //     // let reviews = json
-    //     allReviews.forEach((review) => {
-    //       reviews.push(review)
-    //     })
-    //     // reviews.push()
-    //     createReviewCarousel(reviews)
-
-    //   })
-    // }
-
    function createReviewCarousel(reviews) {
         console.log(reviews)
     const carousel = document.querySelector(".carousel-inner")
@@ -355,8 +339,9 @@ fetch("http://localhost:3000/cheeses")
 
       let carouselItem = document.createElement("div")
     carouselItem.className = "carousel-item"
-
+      console.log(carouselItem)
     if (i === 0) {
+
       carouselItem.classList.add("active")
     }
 
@@ -379,12 +364,24 @@ fetch("http://localhost:3000/cheeses")
     card.appendChild(image)
     card.appendChild(p)
 
-    let staricons = stars.querySelectorAll(".star")
-    card.appendChild(loadStars(staricons, review.rating))
 
-    carouselItem.appendChild(card)
 
-    carousel.appendChild(carouselItem)
+
+       let stars = document.createElement("div")
+          stars.className = "star-rating"
+              stars.innerHTML = `
+          <i class="fa-solid fa-star star"></i>
+          <i class="fa-solid fa-star star"></i>
+          <i class="fa-solid fa-star star"></i>
+          <i class="fa-solid fa-star star"></i>
+          <i class="fa-solid fa-star star"></i>
+           `
+
+        let staricons = stars.querySelectorAll(".star")
+           loadStars(staricons, review.rating)
+            card.appendChild(stars)
+            carouselItem.appendChild(card)
+           carousel.appendChild(carouselItem)
   }
 }
 
@@ -397,7 +394,7 @@ fetch("http://localhost:3000/cheeses")
       star.classList.remove("filled")
     }
     })
-    return stars
+    // return stars
       }
         
 
@@ -505,6 +502,7 @@ function writeReview(product) {
 
 
 function handleFormSubmit(e) {
+  formWrapper.classList.add("hidden")
   let newReview = {
     author: e.target.author.value,
     comment: e.target.comment.value,
@@ -517,15 +515,5 @@ function handleFormSubmit(e) {
 }
 
       
-      
-
-
-    
-
-
-
-  
-   
-
 
   });
