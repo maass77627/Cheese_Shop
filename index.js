@@ -10,7 +10,12 @@ cartItems = []
    const container = document.querySelector(".products");
     const aboutModal = new bootstrap.Modal(document.getElementById("owner-modal"))
     const wineModal = new bootstrap.Modal(document.getElementById("staticBackdrop"))
- 
+ const form = document.querySelector('form')
+ form.addEventLisener(("submit", (e) => {
+  console.log(e)
+  e.preventDefault()
+  handleFormSubmit(e)
+ }))
 
    stars = document.createElement("div")
    stars.className = "star-rating"
@@ -279,45 +284,7 @@ fetch("http://localhost:3000/cheeses")
 
     function loadAboutModal(e) {
        console.log(e.target.value)
-      //  let aboutModal = document.getElementById("owner-modal")
-      //  let aboutDialog = document.getElementById("modal-dialog")
-      //  let aboutContent = document.getElementById("modal-content")
-      //  let modalTitle = document.createElement("h5")
-      //  modalTitle.className="modal-title"
-      //  let modalText = document.createElement("p")
-      //  modalText.id="about-owner"
-      //  let modalImage = document.createElement("img")
-      //  modalImage.id="modal-image"
-      //  modalImage.src="public/people.jpg"
-      //  modalImage.alt = "owner"
-
-      //  if (e.target.value === "Owners") {
-      //   modalTitle.innerText = "About the Owner"
-      //   modalText.innerText = `The owners are a group of many multi-talented friends.
-      //   They all joined together wanting to create a spot in their 
-      //   neighborhood where people could come together and build community.
-      //   They thought a charcuterie shop would be a great place for people
-      //   to enjoy eachothers company as well as the many delicious treats available.
-      //   In the group are farmers, gardeners, chefs etc and they love to use fresh 
-      //   self-grown ingredients in their products.`
-
-      //  } else if (e.target.value === "Contact") {
-      //   modalTitle.innerText = "Contact Us"
-      //   modalText.innerText = `Phone: 1-555-467-3288
-      //   email: "thepairinghouse@gmail.com"
-      //   `
-
-      //  } else {
-      //   aboutModal.classList.add("hidden")
-
-      //  }
-
-      //  aboutContent.appendChild(modalTitle)
-      //  aboutContent.appendChild(modalText)
-      //  aboutContent.appendChild(modalImage)
-      
-        
-         aboutModal.show()
+      aboutModal.show()
      }
 
 
@@ -508,7 +475,10 @@ function writeReview() {
   console.log(form)
   let stars = document.querySelectorAll(".click-star")
   console.log(stars)
-  stars.forEach((star) => star.addEventListener("click", () => changeReviewStars(star)))
+  stars.forEach((star) => {
+    star.style.color === "black"
+    star.addEventListener("click", () => changeReviewStars(star))
+  })
 
 }
 
@@ -518,6 +488,12 @@ function changeReviewStars(star) {
   } else {
     star.style.color = "black"
   }
+}
+
+function handleFormSubmit(e) {
+  console.log(e.target)
+  console.log("form submitted")
+
 }
 
       
